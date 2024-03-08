@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+   "typescript": "^5.2.2",
+   "python3":"3.11.8"
+  }
+
+
+}
