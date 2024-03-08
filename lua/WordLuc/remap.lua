@@ -25,3 +25,4 @@
 
 	vim.keymap.set("v", "<C-P>", '"*y')
 	vim.keymap.set("n", "<C-P>", '"*yy')
+
