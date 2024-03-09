@@ -14,7 +14,8 @@ lsp.on_attach(function(client, bufnr)
 	-- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 	vim.keymap.set("n", "<C-g>", function() builtin.diagnostics({ severity_limit = 1 }) end, opts)
 end)
-vim.api.nvim_create_autocmd({ "BufEnter" }, { command = ":e" })
+
+vim.api.nvim_create_autocmd({ "FileReadPre" }, { command = ":e" })
 lsp.setup({
 	virtual_text = true,
 	signs = true,
