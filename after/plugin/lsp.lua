@@ -15,7 +15,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<C-g>", function() builtin.diagnostics({ severity_limit = 1 }) end, opts)
 end)
 
-vim.api.nvim_create_autocmd({ "FileReadPre" }, { command = ":e" })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, { command = ":e" })
 lsp.setup({
 	virtual_text = true,
 	signs = true,
