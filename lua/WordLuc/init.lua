@@ -16,5 +16,4 @@ vim.opt.incsearch=true
 vim.opt.nu=true
 vim.opt.relativenumber=true
 vim.opt.smartindent=true
-
-vim.cmd(":set scrolloff=30")
+vim.opt.scrolloff=10
