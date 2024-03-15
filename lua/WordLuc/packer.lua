@@ -1,4 +1,10 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+
+--vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--  vim.lsp.diagnostic.on_publish_diagnostics, {
+--    -- delay update diagnostics
+--    update_in_insert = true,
+--  }
+--)-- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -24,14 +30,13 @@ return require('packer').startup(function(use)
 			{ 'neovim/nvim-lspconfig' },
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-buffer' },
 			{ 'hrsh7th/cmp-path' },
 			{ 'hrsh7th/cmp-cmdline' },
 			{ 'hrsh7th/cmp-nvim-lsp-signature-help' },
-			{ "saadparwaiz1/cmp_luasnip" }, }
+			{ "saadparwaiz1/cmp_luasnip" },}
 	}
 
 	use {

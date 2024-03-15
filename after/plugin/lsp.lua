@@ -14,12 +14,20 @@ lsp.on_attach(function(client, bufnr)
 	-- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 	vim.keymap.set("n", "<C-g>", function() builtin.diagnostics({ severity_limit = 1 }) end, opts)
 end)
-vim.diagnostic.config { update_in_insert= true }
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, { command = ":LspRestart" })
+vim.diagnostic.config { update_in_insert = true }
+--vim.api.nvim_create_autocmd({ "BufWinEnter" }, { command = ":LspRestart" })
 lsp.setup({
 	virtual_text = true,
 	signs = true,
 	update_in_insert = true,
 	underline = true,
 	severity_sort = true,
+	float = {
+		focusable = false,
+		style = 'minimal',
+		border = 'rounded',
+		source = 'always',
+		header = '',
+		prefix = '',
+	},
 })
