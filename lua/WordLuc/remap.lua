@@ -25,6 +25,6 @@ vim.keymap.set("n", "<C-c>l", "<cmd>:vsplit<CR>")
 
 vim.keymap.set("v", "<C-y>", '"*y')
 vim.keymap.set("n", "<C-y>", '"*yy')
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = [[:silent! %s/\S\n\zs\(.*(.*)[ |\r]*[{|:]\)/\r\1]]
-})
+--vim.api.nvim_create_autocmd("BufWritePost", {
+--	--command = [[:silent! %s/\S\n\zs\(.*(.*)[ |\r]*[{|:]\)/\r\1]]
+--})
