@@ -9,7 +9,9 @@ require("mason-lspconfig").setup {
 		"vimls",
 		"hls",
 		"gopls",
-		"angularls"
+		"angularls",
+		"zls",
+		"clangd"
 	},
 	automatic_installation = true,
 
@@ -23,6 +25,12 @@ lsp.lua_ls.setup {
 			globals = { 'vim' } }
 	}
 	},
+	capabilities = cap
+}
+lsp.zls.setup {
+	capabilities = cap
+}
+lsp.clangd.setup {
 	capabilities = cap
 }
 lsp.omnisharp.setup {
