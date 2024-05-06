@@ -28,3 +28,6 @@ vim.keymap.set("n", "<C-y>", '"*yy')
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = [[:silent! %s/\S\n\zs\([^if|for|while](.*)[ ]*[\r]*[{|:]\)/\r\1]]
 })
+
+
+vim.keymap.set("n", "<C-s>", "<C-w>T")
