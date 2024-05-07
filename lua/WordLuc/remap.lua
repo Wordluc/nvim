@@ -27,3 +27,8 @@ vim.keymap.set("v", "<C-y>", '"*y')
 vim.keymap.set("n", "<C-y>", '"*yy')
 
 vim.keymap.set("n", "<C-s>", "<C-w>T")
+vim.keymap.set("n", "<C-s>c", function()
+	vim.cmd(":vsplit")
+	vim.lsp.buf.definition()
+	vim.api.nvim_command('wincmd T')
+end)
