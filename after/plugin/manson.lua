@@ -14,18 +14,7 @@ require("mason-lspconfig").setup {
 		"clangd",
 	},
 	automatic_installation = true,
-
-
 }
-require("mason-nvim-dap").setup(
-	{
-		ensure_installed =
-		{
-			"delve",
-			"netcoredbg",
-		},
-		automatic_installation = true,
-	})
 local cap = require('cmp_nvim_lsp').default_capabilities()
 local lsp = require("lspconfig")
 lsp.lua_ls.setup {
