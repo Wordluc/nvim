@@ -1,10 +1,13 @@
 local function openVs(path, nLess)
 	local segments = {}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if path == '""' or nLess == -1 then
 		vim.cmd("! code -r .")
 		return;
 	end
+=======
+>>>>>>> parent of 51dd442 (feat: fix open vscode)
 =======
 >>>>>>> parent of 51dd442 (feat: fix open vscode)
 	for segment in path:gmatch("[^/|\\]+") do
@@ -33,8 +36,11 @@ vim.keymap.set("n", ":vs-", function()
 end)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 vim.keymap.set("n", ":vsr", function()
 	openVs(nil, -1)
 end)
+=======
+>>>>>>> parent of 51dd442 (feat: fix open vscode)
 =======
 >>>>>>> parent of 51dd442 (feat: fix open vscode)
