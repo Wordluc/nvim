@@ -1,7 +1,7 @@
 local function openVs(path, nLess)
 	local segments = {}
 
-	if path == '""' or nLess == -1 then
+	if path == nil or nLess == -1 then
 		vim.cmd("! code -r .")
 		return;
 	end
@@ -23,6 +23,5 @@ vim.keymap.set("n", "vs-", function()
 	openVs(path, 2)
 end)
 vim.keymap.set("n", "vso", function()
-	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
-	openVs(path, -1)
+	openVs(nil, -1)
 end)
