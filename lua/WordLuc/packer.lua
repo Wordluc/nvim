@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
 	}
 	use 'mfussenegger/nvim-dap'
 	use {
+		"jay-babu/mason-nvim-dap.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",

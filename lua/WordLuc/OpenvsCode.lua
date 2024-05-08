@@ -11,14 +11,14 @@ local function openVs(path, nLess)
 	vim.cmd("!code -r " .. newPath .. '"')
 end
 
-vim.keymap.set("n", ":code", function()
+vim.keymap.set("n", ":vs", function()
 	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
 	openVs(path, 1)
 end)
 
-vim.keymap.set("n", ":code-", function()
+vim.keymap.set("n", ":vs-", function()
 	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
 	openVs(path, 2)
 end)
-vim.keymap.set("n", ":coder", function()
+vim.keymap.set("n", ":vsr", function()
 end)
