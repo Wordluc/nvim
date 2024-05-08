@@ -1,5 +1,11 @@
 local function openVs(path, nLess)
 	local segments = {}
+
+	if path == '""' or nLess == -1 then
+		vim.cmd("! code -r .")
+		return;
+	end
+
 	for segment in path:gmatch("[^/|\\]+") do
 		table.insert(segments, segment)
 	end
@@ -7,21 +13,16 @@ local function openVs(path, nLess)
 	vim.cmd("!code -r " .. newPath .. '"')
 end
 
-vim.keymap.set("n", ":code", function()
+vim.keymap.set("n", "vs", function()
 	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
-	if path == '""' then
-		vim.cmd("! code -r .")
-		return;
-	end
 	openVs(path, 1)
 end)
 
-vim.keymap.set("n", ":code-", function()
+vim.keymap.set("n", "vs-", function()
 	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
-	if path == '""' then
-		vim.cmd("! code -r .")
-		return;
-	end
 	openVs(path, 2)
 end)
-
+vim.keymap.set("n", "vso", function()
+	local path = vim.fn.shellescape(vim.fn.expand("%:p"))
+	openVs(path, -1)
+end)
