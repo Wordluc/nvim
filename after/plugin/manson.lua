@@ -2,7 +2,7 @@ require("mason").setup()
 require("mason-lspconfig").setup {
 	ensure_installed =
 	{
-		"omnisharp",
+		"csharp_ls",
 		"pyright",
 		"tsserver",
 		"lua_ls",
@@ -31,7 +31,7 @@ lsp.zls.setup {
 lsp.clangd.setup {
 	capabilities = cap
 }
-lsp.omnisharp.setup {
+lsp.csharp_ls.setup {
 	capabilities = cap
 }
 lsp.pyright.setup {
