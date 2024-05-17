@@ -21,3 +21,6 @@ vim.api.nvim_set_option('shiftwidth', 2)
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 10
+
+vim.g.netrw_sort_by = 'name'
+vim.g.netrw_sort_direction = 'reverse'
