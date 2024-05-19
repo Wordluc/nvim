@@ -1,6 +1,7 @@
 require("WordLuc.remap")
 require("WordLuc.OpenvsCode")
 require("WordLuc.Profiles")
+require("WordLuc.resize")
 if vim.fn.has('win32') == 1 then
 	vim.o.shell = 'powershell'
 else
