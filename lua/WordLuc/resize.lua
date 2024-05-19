@@ -24,8 +24,8 @@ local function verticalResize(amount, increment)
 	end
 end
 
-vim.keymap.set("n", "<C-l>", function() horizontalResize(vim.v.count, false) end)
-vim.keymap.set("n", "<C-h>", function() horizontalResize(vim.v.count, true) end)
+vim.keymap.set("n", "<C-x>", function() horizontalResize(vim.v.count, false) end)
+vim.keymap.set("n", "<C-z>", function() horizontalResize(vim.v.count, true) end)
 
 vim.keymap.set("n", "<C-k>", function() verticalResize(vim.v.count, true) end)
 vim.keymap.set("n", "<C-j>", function() verticalResize(vim.v.count, false) end)
