@@ -6,7 +6,7 @@ lsp.on_attach(function(client, bufnr)
 	lsp.buffer_autoformat()
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.hover() end, opts)
 	vim.keymap.set("n", "gl", function() vim.diagnostic.goto_next() end, opts)
 	vim.keymap.set("n", "gh", function() vim.diagnostic.goto_prev() end, opts)
 	vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
