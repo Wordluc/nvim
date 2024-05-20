@@ -36,3 +36,8 @@ vim.keymap.set("n", "<C-c>c", function()
 	vim.cmd(":split")
 	vim.api.nvim_command('wincmd T')
 end)
+
+vim.keymap.set("n", "<C-p>", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("", path)
+end)

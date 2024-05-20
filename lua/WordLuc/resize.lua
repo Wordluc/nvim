@@ -1,4 +1,4 @@
-local function horizontalResize(amount, increment)
+   local function horizontalResize(amount, increment)
 	local x = vim.api.nvim_win_get_width(0)
 	if amount ~= 0 then
 		vim.fn.setreg("y", math.sqrt(amount * amount))

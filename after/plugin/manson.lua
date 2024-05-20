@@ -12,6 +12,8 @@ require("mason-lspconfig").setup {
 		"angularls",
 		"zls",
 		"clangd",
+		"html",
+		"cssls",
 	},
 	automatic_installation = true,
 }
@@ -26,6 +28,12 @@ lsp.lua_ls.setup {
 	capabilities = cap
 }
 lsp.zls.setup {
+	capabilities = cap
+}
+lsp.cssls.setup {
+	capabilities = cap
+}
+lsp.html.setup {
 	capabilities = cap
 }
 lsp.clangd.setup {
