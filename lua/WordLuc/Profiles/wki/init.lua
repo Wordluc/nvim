@@ -15,26 +15,22 @@ vim.api.nvim_create_user_command('NpmInstall', function()
 	vim.cmd("!" .. dir .. "InstallNodePackage.cmd " .. dir .. " -f")
 end, { bang = true, nargs = '*' })
 
-function prova()
-	return "prova"
-end
-
 vim.api.nvim_create_user_command('Build', function(opts)
 	local dir = vim.fn.getcwd() .. "\\"
 	vim.cmd("tabnew")
-	vim.cmd("terminal msbuild " .. dir .. opts.args .. ".sln")
+	vim.cmd("terminal msbuild " .. dir .. opts.args)
 end, {
 	bang = true,
 	nargs = 1,
 	complete = function()
 		return {
-			"GenyaAdv-TXD",
-			"GenyaAdv-TAX",
-			"GenyaAdv-ECO",
-			"GenyaAdv-DEL",
-			"GenyaAdv-BLL",
-			"GenyaAdv-BKK",
-			"GenyaAdv-ALL",
+			"GenyaAdv-TXD.sln",
+			"GenyaAdv-TAX.sln",
+			"GenyaAdv-ECO.sln",
+			"GenyaAdv-DEL.sln",
+			"GenyaAdv-BLL.sln",
+			"GenyaAdv-BKK.sln",
+			"GenyaAdv.slnf",
 		}
 	end,
 })
