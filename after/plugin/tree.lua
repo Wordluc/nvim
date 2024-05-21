@@ -9,9 +9,9 @@ local tree_utils = require "nvim-tree.utils"
 vim.opt.termguicolors = true
 
 vim.keymap.set("n", "<leader>v", function()
-	vim.cmd("NvimTreeToggle")
+	--tree_api.fs.clear_clipboard()
+	tree_api.tree.toggle(true,false, vim.fn.expand("%:p"))
 end)
-tree_api.fs.clear_clipboard()
 
 local function GetPath(node)
 	local parent = node.parent
@@ -34,8 +34,7 @@ end)
 vim.keymap.set("n", "vr", function()
 	vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
 end)
-
--- empty setup using defaults
+-- empty setup using defaults)
 nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
 	on_attach = "default",
 	hijack_cursor = false,
