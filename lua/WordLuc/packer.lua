@@ -36,6 +36,12 @@ return require('packer').startup(function(use)
 			{ 'hrsh7th/cmp-cmdline' },
 			{ "saadparwaiz1/cmp_luasnip" }, }
 	}
+use( 'folke/neodev.nvim')
+use({'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end})
+	-- file explorer
+	use("nvim-tree/nvim-tree.lua")
+	-- vs-code like icons
+	use("nvim-tree/nvim-web-devicons")
 	use {
 		"ray-x/lsp_signature.nvim",
 	}

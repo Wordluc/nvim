@@ -21,7 +21,8 @@ vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format({})
 end)
 
-
+require("neodev").setup({
+})
 
 lsp.setup({
 	virtual_text = true,
@@ -38,3 +39,4 @@ lsp.setup({
 		prefix = '',
 	},
 })
+
