@@ -1,6 +1,5 @@
 require 'nvim-treesitter.configs'.setup {
 	ensure_installed = { "c", "c_sharp", "javascript", "typescript", "lua", "vim", "vimdoc", "query", "zig", "rust" },
-
 	sync_install = false,
 
 	auto_install = true,
@@ -13,3 +12,7 @@ require 'nvim-treesitter.configs'.setup {
 		additional_vim_regex_highlighting = true,
 	},
 }
+
+
+
+

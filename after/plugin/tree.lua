@@ -31,6 +31,10 @@ vim.keymap.set("n", "vg", function()
 	vim.cmd("silent !git add " .. GetPath(tree_api.tree.get_node_under_cursor()))
 end)
 
+vim.keymap.set("n", "vv", function()
+	tree_api.git.reload()
+end)
+
 vim.keymap.set("n", "vr", function()
 	vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
 end)

@@ -38,6 +38,10 @@ vim.keymap.set("n", "<C-p>", function()
 	vim.fn.setreg("", path)
 end)
 
+vim.keymap.set("n", "<C-p>o", function()
+	vim.cmd(":vsplit")
+	vim.cmd("e! " .. vim.fn.getreg(""))
+end)
 
 
 --local id = vim.api.nvim_create_augroup("startup", {
