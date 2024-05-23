@@ -18,50 +18,40 @@ require("mason-lspconfig").setup {
 	automatic_installation = true,
 }
 local cap = vim.tbl_deep_extend("force",
-  vim.lsp.protocol.make_client_capabilities(),
-  require('cmp_nvim_lsp').default_capabilities()
+	vim.lsp.protocol.make_client_capabilities(),
+	require('cmp_nvim_lsp').default_capabilities()
 )
 cap.workspace.didChangeWatchedFiles.dynamicRegistration = false
+local default_setup = function(server)
+	require('lspconfig')[server].setup({
+		capabilities = cap,
+	})
+end
 
-local lsp = require("lspconfig")
-lsp.lua_ls.setup {
-	settings = { Lua = {
-		diagnostics = {
-			globals = { 'vim' } }
+if Env.cur == Env.conf then
+	require("neodev").setup()
+	require('lspconfig').lua_ls.setup {
+		settings = { Lua = {
+			diagnostics = {
+				globals = { 'vim' } }
+		},
+			workspace = {
+				library = {
+					vim.env.VIMRUNTIME,
+				}
+			}
+		},
+		capabilities = cap
 	}
-	},
-	capabilities = cap
-}
-lsp.zls.setup {
-	capabilities = cap
-}
-lsp.cssls.setup {
-	capabilities = cap
-}
-lsp.html.setup {
-	capabilities = cap
-}
-lsp.clangd.setup {
-	capabilities = cap
-}
-lsp.csharp_ls.setup {
-	capabilities = cap
-}
-lsp.pyright.setup {
-	capabilities = cap
-}
-lsp.tsserver.setup {
-	capabilities = cap
-}
-lsp.vimls.setup {
-	capabilities = cap
-}
-lsp.hls.setup {
-	capabilities = cap
-}
-lsp.gopls.setup {
-	capabilities = cap
-}
-lsp.angularls.setup {
-	capabilities = cap
-}
+end
+default_setup("csharp_ls")
+default_setup("pyright")
+default_setup("tsserver")
+default_setup("vimls")
+default_setup("hls")
+default_setup("gopls")
+default_setup("angularls")
+default_setup("zls")
+default_setup("clangd")
+default_setup("html")
+default_setup("cssls")
