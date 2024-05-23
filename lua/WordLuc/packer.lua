@@ -29,15 +29,16 @@ return require('packer').startup(function(use)
 			{ 'neovim/nvim-lspconfig' },
 			-- Autocompletion
 			{ 'hrsh7th/nvim-cmp' },
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'hrsh7th/cmp-cmdline' },
-			{ "saadparwaiz1/cmp_luasnip" }, }
+						{ 'L3MON4D3/LuaSnip' },
+					{ 'hrsh7th/cmp-nvim-lsp' },
+			--			{ 'hrsh7th/cmp-buffer' },
+			--			{ 'hrsh7th/cmp-path' },
+			--			{ 'hrsh7th/cmp-cmdline' },
+			--			{ "saadparwaiz1/cmp_luasnip" },
+		}
 	}
-use( 'folke/neodev.nvim')
-use({'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end})
+	use('folke/neodev.nvim') --for lsp vim
+	use({ 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end })
 	-- file explorer
 	use("nvim-tree/nvim-tree.lua")
 	-- vs-code like icons
