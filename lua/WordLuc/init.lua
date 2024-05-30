@@ -25,3 +25,12 @@ vim.opt.scrolloff = 10
 
 vim.g.netrw_sort_by = 'name'
 vim.g.netrw_sort_direction = 'reverse'
+
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({"FocusGained","BufEnter"},{
+		pattern = { "*" },
+		callback = function()
+			vim.cmd("checktime")
+			print("update buf")
+		end
+})
