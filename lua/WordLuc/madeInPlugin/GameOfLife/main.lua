@@ -13,5 +13,12 @@ local childPosition = {
 	x = vim.api.nvim_win_get_width(0) - childSize.x / 2 - parentSize.x / 2
 }
 local buf = win.open_buffer(childPosition, childSize)
-win.fill_buffer(buf, "o")
-win.write_pixel(buf, 1, 2)
+win.fill_buffer(buf, "d")
+local loop
+local i=0
+loop=function ()
+	win.write_pixel(buf, i, i)
+	i=i+1
+	vim.defer_fn(loop, 1000)
+end
+loop()

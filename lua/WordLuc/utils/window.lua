@@ -14,8 +14,8 @@ M.open_buffer = function(position,size)
 	return buffer
 end
 
-M.write_pixel = function(buffer, x, y)
-	vim.api.nvim_buf_set_text(buffer, y,x,y+1,x+1, {"o"})
+M.write_pixel = function(buffer, y,x)
+	vim.api.nvim_buf_set_text(buffer, y,x,y,x+1, {"o"})
 end
 
 M.fill_buffer = function(buffer,val)
