@@ -1,5 +1,3 @@
-local win = require("WordLuc.utils.window")
-
 local parentSize = {
 	x = vim.api.nvim_win_get_width(0),
 	y = vim.api.nvim_win_get_height(0)
@@ -12,10 +10,9 @@ local childPosition = {
 	y = vim.api.nvim_win_get_height(0) - childSize.y / 2 - parentSize.y / 2,
 	x = vim.api.nvim_win_get_width(0) - childSize.x / 2 - parentSize.x / 2
 }
-local buf = win.open_buffer(childPosition, childSize)
-
+local win = require("WordLuc.utils.window")
 local key
-vim.on_key(function(v)key=v end)
+vim.on_key(function(v) key = v end)
 
 local function initializeMatrix()
 	local matrix = {}
@@ -28,7 +25,7 @@ local function initializeMatrix()
 	end
 	return matrix
 end
-local function drawMatrix(matrix)
+local function drawMatrix(matrix, buf)
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
 			if matrix[x .. ":" .. y] == true then
@@ -54,11 +51,12 @@ local function getNeighbors(x, y, matrix)
 	return c
 end
 
-local function loop(matrix)
+local function loop(matrix, buf)
 	if key ~= nil then
-		vim.cmd("bd "..buf)
+		vim.cmd("bd " .. buf)
 		return
 	end
+	print("fff")
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
 			local c = getNeighbors(x, y, matrix)
@@ -73,20 +71,14 @@ local function loop(matrix)
 			end
 		end
 	end
-	drawMatrix(matrix)
+	drawMatrix(matrix, buf)
 	vim.defer_fn(function()
-		--clean()
-		loop(matrix)
+		loop(matrix, buf)
 	end, 500)
 end
-
---vim.api.nvim_buf_attach(buf, true, {
---	on_lines = function()
---		win.fill_buffer(buf, " ")
---		loop(initializeMatrix())
---	end
---})
-
-win.fill_buffer(buf, " ")
-loop(initializeMatrix())
-
+return function()
+	key = nil
+	local r = win.open_buffer(childPosition, childSize)
+	win.fill_buffer(r.buf, " ")
+	loop(initializeMatrix(), r.buf)
+end

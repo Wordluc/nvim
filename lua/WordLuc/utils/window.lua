@@ -1,21 +1,23 @@
 local M = {}
 M.open_buffer = function(position,size)
-	vim.api.nvim_open_win(-1, true, {
+	local w=vim.api.nvim_open_win(0, true, {
 		relative = "editor",
 		style = "minimal",
 		border = "rounded",
 		row = position.y+1,
 		col = position.x,
 		width = size.x,
-		height = size.y+1,
+		height = size.y,
 	})
 	M.size = size
 	local buffer = vim.api.nvim_create_buf(true, true)
-	return buffer
+	vim.api.nvim_win_set_cursor(w, {1,1})
+	return {buf=buffer,win=w}
 end
 
 M.write_pixel = function(buffer, x,y,v)
 	vim.api.nvim_buf_set_text(buffer, y,x,y,x+1, {v})
+	vim.api.nvim_win_set_cursor(0, {1,1})
 end
 
 M.fill_buffer = function(buffer,val)
@@ -24,6 +26,7 @@ M.fill_buffer = function(buffer,val)
 	for i = 0, M.size.y-1 do
 		vim.api.nvim_buf_set_lines(buffer, i, i, false, {str})
 	end
+	vim.api.nvim_win_set_cursor(0, {1,1})
 end
 
 return M

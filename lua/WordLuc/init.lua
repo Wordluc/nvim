@@ -33,3 +33,7 @@ vim.api.nvim_create_autocmd({"FocusGained","BufEnter"},{
 			vim.cmd("checktime")
 		end
 })
+
+vim.api.nvim_create_user_command('Sleep', function()
+	require("WordLuc.madeInPlugin.GameOfLife.main")()
+end ,{ bang = true, nargs = '*' })
