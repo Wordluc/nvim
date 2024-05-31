@@ -13,12 +13,80 @@ local childPosition = {
 	x = vim.api.nvim_win_get_width(0) - childSize.x / 2 - parentSize.x / 2
 }
 local buf = win.open_buffer(childPosition, childSize)
-win.fill_buffer(buf, "d")
-local loop
-local i=0
-loop=function ()
-	win.write_pixel(buf, i, i)
-	i=i+1
-	vim.defer_fn(loop, 1000)
+
+local key
+vim.on_key(function(v)key=v end)
+
+local function initializeMatrix()
+	local matrix = {}
+	for x = 0, childSize.x - 1 do
+		for y = 0, childSize.y - 1 do
+			local v = math.random(0, 5) == 0
+			local index = x .. ":" .. y
+			matrix[index] = v
+		end
+	end
+	return matrix
 end
-loop()
+local function drawMatrix(matrix)
+	for x = 0, childSize.x - 1 do
+		for y = 0, childSize.y - 1 do
+			if matrix[x .. ":" .. y] == true then
+				win.write_pixel(buf, x, y, "o")
+			else
+				win.write_pixel(buf, x, y, " ")
+			end
+		end
+	end
+end
+
+local function getNeighbors(x, y, matrix)
+	local c = 0
+	for ix = x - 1, x + 1 do
+		for iy = y - 1, y + 1 do
+			if (x ~= ix or y ~= iy) then
+				if matrix[ix .. ":" .. iy] then
+					c = c + 1
+				end
+			end
+		end
+	end
+	return c
+end
+
+local function loop(matrix)
+	if key ~= nil then
+		vim.cmd("bd "..buf)
+		return
+	end
+	for x = 0, childSize.x - 1 do
+		for y = 0, childSize.y - 1 do
+			local c = getNeighbors(x, y, matrix)
+			if c < 2 then
+				matrix[x .. ":" .. y] = false
+			end
+			if c > 3 then
+				matrix[x .. ":" .. y] = false
+			end
+			if c == 3 then
+				matrix[x .. ":" .. y] = true
+			end
+		end
+	end
+	drawMatrix(matrix)
+	vim.defer_fn(function()
+		--clean()
+		loop(matrix)
+	end, 500)
+end
+
+--vim.api.nvim_buf_attach(buf, true, {
+--	on_lines = function()
+--		win.fill_buffer(buf, " ")
+--		loop(initializeMatrix())
+--	end
+--})
+
+win.fill_buffer(buf, " ")
+loop(initializeMatrix())
+

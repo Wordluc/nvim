@@ -4,7 +4,7 @@ M.open_buffer = function(position,size)
 		relative = "editor",
 		style = "minimal",
 		border = "rounded",
-		row = position.y,
+		row = position.y+1,
 		col = position.x,
 		width = size.x,
 		height = size.y+1,
@@ -14,14 +14,14 @@ M.open_buffer = function(position,size)
 	return buffer
 end
 
-M.write_pixel = function(buffer, y,x)
-	vim.api.nvim_buf_set_text(buffer, y,x,y,x+1, {"o"})
+M.write_pixel = function(buffer, x,y,v)
+	vim.api.nvim_buf_set_text(buffer, y,x,y,x+1, {v})
 end
 
 M.fill_buffer = function(buffer,val)
 	local str=string.rep(val, M.size.x)
 	vim.api.nvim_set_current_buf(buffer)
-	for i = 0, M.size.y  do
+	for i = 0, M.size.y-1 do
 		vim.api.nvim_buf_set_lines(buffer, i, i, false, {str})
 	end
 end
