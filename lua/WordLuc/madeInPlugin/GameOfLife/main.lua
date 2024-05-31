@@ -56,7 +56,6 @@ local function loop(matrix, buf)
 		vim.cmd("bd " .. buf)
 		return
 	end
-	print("fff")
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
 			local c = getNeighbors(x, y, matrix)
