@@ -1,30 +1,31 @@
+local win = require("WordLuc.utils.window")
 local parentSize = {
 	x = vim.api.nvim_win_get_width(0),
 	y = vim.api.nvim_win_get_height(0)
 }
 local childSize = {
-	x = math.floor(parentSize.x * (1 - 0.30)),
-	y = math.floor(parentSize.y * (1 - 0.30))
+	x = math.floor(parentSize.x * (1 - 0.20)),
+	y = math.floor(parentSize.y * (1 - 0.20))
 }
 local childPosition = {
 	y = vim.api.nvim_win_get_height(0) - childSize.y / 2 - parentSize.y / 2,
 	x = vim.api.nvim_win_get_width(0) - childSize.x / 2 - parentSize.x / 2
 }
-local win = require("WordLuc.utils.window")
 local key
-vim.on_key(function(v) key = v end)
+vim.on_key(function(v) key = v  end)
 
 local function initializeMatrix()
 	local matrix = {}
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
-			local v = math.random(0, 5) == 0
+			local v = math.random(0, 9) == 0
 			local index = x .. ":" .. y
 			matrix[index] = v
 		end
 	end
 	return matrix
 end
+
 local function drawMatrix(matrix, buf)
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
@@ -51,30 +52,54 @@ local function getNeighbors(x, y, matrix)
 	return c
 end
 
+local function isDeath(x, y, matrix)
+	local c = getNeighbors(x, y, matrix)
+	if c == 3 then
+		matrix[x .. ":" .. y] = true
+		return true
+	end
+	return false
+end
+
+local function isAlive(x, y, matrix)
+	local c = getNeighbors(x, y, matrix)
+	if c < 2 then
+		matrix[x .. ":" .. y] = false
+		return true
+	end
+	if c > 3 then
+		matrix[x .. ":" .. y] = false
+		return true
+	end
+	return false
+end
+
 local function loop(matrix, buf)
 	if key ~= nil then
 		vim.cmd("bd " .. buf)
 		return
 	end
+	local isChanged
 	for x = 0, childSize.x - 1 do
 		for y = 0, childSize.y - 1 do
-			local c = getNeighbors(x, y, matrix)
-			if c < 2 then
-				matrix[x .. ":" .. y] = false
-			end
-			if c > 3 then
-				matrix[x .. ":" .. y] = false
-			end
-			if c == 3 then
-				matrix[x .. ":" .. y] = true
+			if matrix[x .. ":" .. y] == false then
+				isChanged = isDeath(x, y, matrix) or isChanged
+			else
+				isChanged = isAlive(x, y, matrix) or isChanged
 			end
 		end
 	end
+
 	drawMatrix(matrix, buf)
 	vim.defer_fn(function()
+		if isChanged == false then
+			print("cio")
+			matrix = initializeMatrix()
+		end
 		loop(matrix, buf)
 	end, 500)
 end
+
 return function()
 	key = nil
 	local r = win.open_buffer(childPosition, childSize)
