@@ -21,7 +21,7 @@ local cap = vim.tbl_deep_extend("force",
 	vim.lsp.protocol.make_client_capabilities(),
 	require('cmp_nvim_lsp').default_capabilities()
 )
-cap.workspace.didChangeWatchedFiles.dynamicRegistration = false
+cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 local default_setup = function(server)
 	require('lspconfig')[server].setup({
 		capabilities = cap,
