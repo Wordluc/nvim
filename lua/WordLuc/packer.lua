@@ -10,6 +10,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
+	 use 'mbbill/undotree'
 	use 'wbthomason/packer.nvim'
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
