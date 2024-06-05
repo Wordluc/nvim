@@ -1,16 +1,8 @@
---vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---  vim.lsp.diagnostic.on_publish_diagnostics, {
---    -- delay update diagnostics
---    update_in_insert = true,
---  }
---)-- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	 use 'mbbill/undotree'
+	use 'mbbill/undotree'
 	use 'wbthomason/packer.nvim'
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -38,5 +30,6 @@ return require('packer').startup(function(use)
 	use {
 		"navarasu/onedark.nvim"
 	}
-	use 'Exafunction/codeium.vim'
+	use { 'Exafunction/codeium.vim', tag="1.8.37"
+	}
 end)
