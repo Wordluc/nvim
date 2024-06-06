@@ -26,13 +26,13 @@ vim.opt.scrolloff = 10
 vim.g.netrw_sort_by = 'name'
 vim.g.netrw_sort_direction = 'reverse'
 
-vim.opt.autoread = true
-vim.api.nvim_create_autocmd({"FocusGained","BufEnter"},{
-		pattern = { "*" },
-		callback = function()
-			vim.cmd("checktime")
-		end
-})
+--vim.opt.autoread = true
+--vim.api.nvim_create_autocmd({"FocusGained","BufEnter"},{
+--		pattern = { "*" },
+--		callback = function()
+--			vim.cmd("checktime")
+--		end
+--})
 
 vim.api.nvim_create_user_command('Sleep', function()
 	require("WordLuc.madeInPlugin.GameOfLife.main")()
