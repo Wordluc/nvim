@@ -3,11 +3,13 @@ Env={
 cur=nil,
 wki="wki",
 go="go",
+cs="cs",
 conf="",
 }
 local profiles = {}
 profiles[Env.wki] = function() require("WordLuc.Profiles.wki") end
 profiles[Env.go] = function() require("WordLuc.Profiles.go") end
+profiles[Env.cs] = function() require("WordLuc.Profiles.CSharp") end
 profiles[Env.conf] = function() end
 
 if profiles[inputEnv] then
