@@ -36,4 +36,8 @@ end)
 vim.keymap.set("n", "vr", function()
 	vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
 end)
-nvim_tree.setup {}
+nvim_tree.setup {
+view = {
+		relativenumber = true,
+	}
+}

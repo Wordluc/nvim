@@ -16,3 +16,5 @@ vim.keymap.set('n', '<leader>fg', function()
 	builtin.lsp_references()
 end)
 vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
+
+vim.keymap.set('n', '<leader>fs', builtin.tagstack, {})
