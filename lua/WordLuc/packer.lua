@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
 	use 'mbbill/undotree'
 	use 'wbthomason/packer.nvim'
 	use {
-		'nvim-telescope/telescope.nvim', branch = '0.1.x',
+		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
