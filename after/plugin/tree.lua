@@ -3,17 +3,17 @@ local tree_api = require("nvim-tree.api")
 vim.opt.termguicolors = true
 
 vim.keymap.set("n", "<leader>v", function()
-		tree_api.tree.toggle(true, false, vim.fn.expand("%:p"))
-	end)
+	tree_api.tree.toggle(true, false, vim.fn.expand("%:p"))
+end)
 
-	local function GetPath(node)
-		local parent = node.parent
-		local path = ""
-		while (parent ~= nil) do
-			if (path ~= "") then
-				path = "/" .. path
-			end
-			path = node.name .. path
+local function GetPath(node)
+	local parent = node.parent
+	local path = ""
+	while (parent ~= nil) do
+		if (path ~= "") then
+			path = "/" .. path
+		end
+		path = node.name .. path
 		node = parent
 		parent = parent.parent
 	end
@@ -132,7 +132,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
 		show_on_dirs = true,
 		show_on_open_dirs = true,
 		disable_for_dirs = {},
-		timeout = 1000,
+		timeout = 10000,
 		cygwin_support = false,
 	},
 	diagnostics = {
