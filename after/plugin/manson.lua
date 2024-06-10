@@ -17,7 +17,18 @@ require("mason-lspconfig").setup {
 	},
 	automatic_installation = true,
 }
-local cap = require('cmp_nvim_lsp').default_capabilities()
+local cap = require('lspconfig').util.default_config.capabilities
+cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
+local oldMath = require("vim.lsp._watchfiles")._match
+
+require("vim.lsp._watchfiles")._match = function(a, b)
+	if string.find(b, '.csproj') or string.find(b, '.sln') then
+		return false
+	end
+
+	return oldMath(a, b)
+end
+
 local default_setup = function(server)
 	require('lspconfig')[server].setup({
 		capabilities = cap,

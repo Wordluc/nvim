@@ -6,7 +6,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
 	callback = function(event)
 		local opts = { buffer = event.buf }
-
+    local cli = vim.lsp.get_client_by_id(event.data.client_id)
+		cli.init_options = {watchers = { {globPattern = "**/*.cs"} }}
 		vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 		vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.hover() end, opts)
 		vim.keymap.set("n", "gl", function() vim.diagnostic.goto_next() end, opts)
@@ -23,3 +24,4 @@ vim.diagnostic.config { update_in_insert = true }
 vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format({})
 end)
+
