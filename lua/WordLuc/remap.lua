@@ -23,9 +23,10 @@ vim.keymap.set("n", "cm", 'cgn')
 --vim.keymap.set("n", "<C-c>k", "<cmd>:split<CR>") there is (ctrl + w) +v
 --vim.keymap.set("n", "<C-c>l", "<cmd>:vsplit<CR>")there is (ctrl + w) +s
 
-vim.keymap.set("v", "<C-y>", '"*y')
-vim.keymap.set("n", "<C-y>", '"*yy')
-
+vim.keymap.set("n", "<C-y>", function ()
+   local regVim = vim.fn.getreg('')
+	 vim.fn.setreg("*", regVim)
+end)
 vim.keymap.set("n", "<C-s>", "<C-w>T")
 vim.keymap.set("n", "<C-c>c", function()
 	vim.cmd(":vsplit")
