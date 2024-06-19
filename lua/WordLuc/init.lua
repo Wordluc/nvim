@@ -33,7 +33,10 @@ vim.g.netrw_sort_direction = 'reverse'
 --			vim.cmd("checktime")
 --		end
 --})
-
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
 vim.api.nvim_create_user_command('Sleep', function()
 	require("WordLuc.madeInPlugin.GameOfLife.main")()
 end ,{ bang = true, nargs = '*' })

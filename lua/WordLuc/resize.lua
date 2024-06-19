@@ -27,3 +27,4 @@ end
 vim.keymap.set("n", "<C-h>", function() horizontalResize(vim.v.count, true) end)
 
 vim.keymap.set("n", "<C-k>", function() verticalResize(vim.v.count, true) end)
+
