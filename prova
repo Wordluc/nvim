@@ -1,0 +1,14 @@
+public class persona{
+   public string nome{get;set;}
+	 public string cognome{get;set;}
+	 public int eta{get;set;}
+}
+
+
+------------------------------
+
+public interface persona{
+	nome:string
+	cognome:string
+	eta:number
+}
