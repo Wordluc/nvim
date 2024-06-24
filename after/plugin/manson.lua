@@ -18,16 +18,25 @@ require("mason-lspconfig").setup {
 	automatic_installation = true,
 }
 local cap = require('lspconfig').util.default_config.capabilities
-cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 local oldMath = require("vim.lsp._watchfiles")._match
 
-require("vim.lsp._watchfiles")._match = function(a, b)
-	if string.find(b, '.csproj') or string.find(b, '.sln') then
-		return false
+require("vim.lsp._watchfiles")._match = function(pattern, path)
+	if EnvManage.isEnv(EnvEnum.cs) then
+		if string.find(path, '.csproj') or string.find(path, '.sln') then
+			return false
+		end
+		if string.find(path, 'bin') or string.find(path, 'obj') then
+			return false
+		end
 	end
-
-	return oldMath(a, b)
+	if EnvManage.isEnv(EnvEnum.wki) then
+		if string.find(path, 'FakeCredentials') or string.find(path, 'GenyaUploads') then
+			return false
+		end
+	end
+	return oldMath(pattern, path)
 end
+cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 local default_setup = function(server)
 	require('lspconfig')[server].setup({
@@ -35,7 +44,7 @@ local default_setup = function(server)
 	})
 end
 
-if Env.cur == Env.conf then
+if EnvManage.isEnv(EnvEnum.conf) then
 	require("neodev").setup()
 	require('lspconfig').lua_ls.setup {
 		settings = { Lua = {
