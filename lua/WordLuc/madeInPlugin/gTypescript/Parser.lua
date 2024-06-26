@@ -7,7 +7,11 @@ local function contains(table, value)
 	end
 	return false
 end
+local complexTypeKnow = {
+	"List", "IEnumerable"
+}
 local visibility = { "public", "private", "protected" }
+local optionalType = { ["true"] ="|null", ["false"] = ""}
 local translationType = {
 	int = "number",
 	string = "string",
@@ -19,17 +23,65 @@ local typeScriptparm = {
 	name = nil,
 	optional = false
 }
-local Node = {
-	type = "",
-	translation = "",
-}
-local Parser = {}
-local fparser = {
-}
-function Parser:Parse(string)
-	local tokens = lexer.Lexer:New(string)
-end
 
+
+local function isAComplexType(l)
+	local token = l:PeekCur()
+	if token == nil then
+		return false
+	end
+	if token.type == Token.Word then
+		local nextType = l:PeekNext()
+		if nextType ~= nil and nextType.type == Token.Lower then
+			return true
+		end
+	end
+	return false
+end
+local function parsingGenericType(l)
+	local token = l:PeekCur()
+	if token == nil then
+		return token.value
+	end
+	local genericParm = {}
+	local nextToken = l:Next()
+	if nextToken.type == Token.Lower then
+		l:Increment()
+		while true do
+			local t = l:PeekCur()
+			if t == nil then
+				return token.value
+			end
+			if t.type == Token.Word then
+				genericParm[#genericParm + 1] = t.value
+			end
+			if t.type == Token.Greater then
+				break
+			end
+			l:Increment()
+		end
+	end
+	return token.value .. "<" .. table.concat(genericParm, ",") .. ">"
+end
+local function parsingType(l, res)
+	local token = l:PeekCur()
+	if isAComplexType(l) then
+		if contains(complexTypeKnow, token.value) then
+			l:Increment()
+			token = l:Next()
+			res.type = "[]" .. token.value
+			l:Increment()
+			return res
+		else
+			res.type = parsingGenericType(l)
+			l:Increment()
+			return res
+		end
+		res.type = token.value
+		l:Increment()
+		return res
+	end
+end
 local function parsingParams(l, res)
 	local token = l:PeekCur()
 	if token == nil then
@@ -41,8 +93,7 @@ local function parsingParams(l, res)
 	end
 	if token.type == Token.Word then
 		if (res.type == nil) then
-			res.type = token.value
-			l:Increment()
+			parsingType(l, res)
 			parsingParams(l, res)
 		elseif (res.name == nil) then
 			res.name = token.value
@@ -56,10 +107,3 @@ local function parsingParams(l, res)
 	l:Increment()
 	return parsingParams(l, res)
 end
-
-function Parser:Parsing(l)
-
-end
-local l=Lexer:New("public string nome;")
-local res=parsingParams(l, typeScriptparm)
-print(res.optional)

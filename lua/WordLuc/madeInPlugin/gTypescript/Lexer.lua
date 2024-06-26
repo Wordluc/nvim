@@ -10,6 +10,8 @@ Token = {
 	Semicolon = 8,
 	Space = 9,
 	QuestionMark = 10,
+	Greater = 11,
+	Lower = 12,
 	ERROR = 0
 }
 Lexer = {
@@ -36,6 +38,10 @@ local function match(string)
 		return Token.QuestionMark
 	elseif string == " " then
 		return Token.Space
+	elseif string == ">" then
+		return Token.Greater
+	elseif string == "<" then
+		return Token.Lower
 	else
 		if string:match("%a") then
 			return Token.Word
@@ -97,14 +103,13 @@ function Lexer:PrePeek()
 	return self.Tokens[self.index - 1]
 end
 
-function Lexer:Peek()
+function Lexer:PeekNext()
 	if self.index >= #self.Tokens then
 		return nil
 	end
 	return self.Tokens[self.index + 1]
 end
 function Lexer:PeekCur()
-	print(self.index)
 	return self.Tokens[self.index]
 end
 M.Lexer = Lexer
