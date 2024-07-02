@@ -1,4 +1,4 @@
-require("WordLuc.Profiles.CSharp")
+EnvManage.addEnv(EnvEnum.cs)
 print("Welcome to wki")
 
 vim.api.nvim_create_user_command('IssSet', function()
