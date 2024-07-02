@@ -7,7 +7,6 @@ require("mason-lspconfig").setup {
 		"tsserver",
 		"lua_ls",
 		"vimls",
-		"hls",
 		"gopls",
 		"angularls",
 		"zls",
@@ -17,25 +16,21 @@ require("mason-lspconfig").setup {
 	},
 	automatic_installation = true,
 }
-local cap = require('lspconfig').util.default_config.capabilities
-local oldMath = require("vim.lsp._watchfiles")._match
-
-require("vim.lsp._watchfiles")._match = function(pattern, path)
-	if EnvManage.isEnv(EnvEnum.cs) then
-		if string.find(path, '.csproj') or string.find(path, '.sln') then
-			return false
-		end
-		if string.find(path, 'bin') or string.find(path, 'obj') then
-			return false
-		end
-	end
-	if EnvManage.isEnv(EnvEnum.wki) then
-		if string.find(path, 'FakeCredentials') or string.find(path, 'GenyaUploads') then
-			return false
-		end
-	end
-	return oldMath(pattern, path)
+local glob = require('vim.glob')
+local poll=require("vim.lsp._watchfiles")._poll_exclude_pattern
+if EnvManage.isEnv(EnvEnum.cs)then
+	poll=poll+glob.to_lpeg("**/*.sln")
+	poll=poll+glob.to_lpeg("**/*.csproj")
+	poll=poll+glob.to_lpeg("**/bin/**")
+	poll=poll+glob.to_lpeg("**/obj/**")
 end
+if EnvManage.isEnv(EnvEnum.wki)then
+	poll=poll+glob.to_lpeg("**/FakeCredentials/**")
+	poll=poll+glob.to_lpeg("**/GenyaUploads/**")
+end
+require("vim.lsp._watchfiles")._poll_exclude_pattern=poll
+
+local cap = require('lspconfig').util.default_config.capabilities
 cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 local default_setup = function(server)
@@ -64,7 +59,6 @@ default_setup("csharp_ls")
 default_setup("pyright")
 default_setup("tsserver")
 default_setup("vimls")
-default_setup("hls")
 default_setup("gopls")
 default_setup("angularls")
 default_setup("zls")
