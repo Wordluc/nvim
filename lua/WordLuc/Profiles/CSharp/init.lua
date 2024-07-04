@@ -11,8 +11,7 @@ vim.api.nvim_create_user_command('Gnamespace', function()
 end, { bang = true, nargs = '*' })
 
 vim.api.nvim_create_user_command('Gtypescript', function()
-	local str = vim.fn.getreg("")
 	require("FromC#ToTypeScript")
-			.create_server(90, str)
+			.convertDto(90,"")
 end, { bang = true, nargs = '*' })
 

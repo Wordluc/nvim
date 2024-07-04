@@ -42,6 +42,7 @@ end
 
 if EnvManage.isEnv(EnvEnum.conf) then
 	require("neodev").setup()
+end
 	require('lspconfig').lua_ls.setup {
 		settings = { Lua = {
 			diagnostics = {
@@ -55,7 +56,6 @@ if EnvManage.isEnv(EnvEnum.conf) then
 		},
 		capabilities = cap
 	}
-end
 default_setup("csharp_ls")
 default_setup("pyright")
 default_setup("tsserver")
