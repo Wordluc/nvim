@@ -8,7 +8,8 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
-	use {"Wordluc/FromC-ToTypeScript",branch="master"}
+	use { "nvim-neotest/nvim-nio" }
+	use { "Wordluc/FromC-ToTypeScript", branch = "master" }
 	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 	use('hrsh7th/nvim-cmp')
 	use('L3MON4D3/LuaSnip')
@@ -30,6 +31,6 @@ return require('packer').startup(function(use)
 	use {
 		"navarasu/onedark.nvim"
 	}
-	use { 'Exafunction/codeium.vim', tag="1.8.37"
+	use { 'Exafunction/codeium.vim', tag = "1.8.37"
 	}
 end)

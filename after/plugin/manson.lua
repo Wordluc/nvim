@@ -26,6 +26,7 @@ if EnvManage.isEnv(EnvEnum.cs)then
 end
 if EnvManage.isEnv(EnvEnum.wki)then
 	poll=poll+glob.to_lpeg("**/FakeCredentials/**")
+	poll=poll+glob.to_lpeg("**/*.js")
 	poll=poll+glob.to_lpeg("**/GenyaUploads/**")
 end
 require("vim.lsp._watchfiles")._poll_exclude_pattern=poll
