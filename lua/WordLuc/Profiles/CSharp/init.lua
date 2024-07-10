@@ -12,6 +12,6 @@ end, { bang = true, nargs = '*' })
 
 vim.api.nvim_create_user_command('Gtypescript', function()
 	require("FromC#ToTypeScript")
-			.convertDto(90,"")
+			.convertDto("")
 end, { bang = true, nargs = '*' })
 
