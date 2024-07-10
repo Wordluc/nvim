@@ -1,3 +1,4 @@
+require("WordLuc.packer")
 local cap = require('lspconfig').util.default_config.capabilities
 
 cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
@@ -48,6 +49,5 @@ local inputEnv = vim.fn.input("Enter env: ")
 print("\n")
 
 
-require("WordLuc.packer")
 require("WordLuc")
 EnvManage.addEnv(inputEnv)

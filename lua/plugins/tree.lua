@@ -1,5 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
+	keys = { "<leader>v", "vg", "vr" },
 	config = function()
 		local nvim_tree = require("nvim-tree")
 		local tree_api = require("nvim-tree.api")
@@ -23,13 +24,13 @@ return {
 			return path
 		end
 
-		vim.keymap.set("n", "vg", function()
-			vim.cmd("silent !git add " .. GetPath(tree_api.tree.get_node_under_cursor()))
-		end)
-
-		vim.keymap.set("n", "vr", function()
-			vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
-		end)
+--		vim.keymap.set("n", "vg", function()
+--			vim.cmd("silent !git add " .. GetPath(tree_api.tree.get_node_under_cursor()))
+--		end)
+--
+--		vim.keymap.set("n", "vr", function()
+--			vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
+--		end)
 
 		nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
 			on_attach = "default",
