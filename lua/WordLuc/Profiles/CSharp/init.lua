@@ -1,5 +1,5 @@
 print("Welcome to C#")
-
+Default_setup("csharp_ls")
 vim.api.nvim_create_user_command('Gnamespace', function()
 	local dir = vim.fn.expand("%:.")
 	local namespace = {}
@@ -15,3 +15,10 @@ vim.api.nvim_create_user_command('Gtypescript', function()
 end, { bang = true, nargs = '*' })
 
 
+local glob = require('vim.glob')
+local poll = require("vim.lsp._watchfiles")._poll_exclude_pattern
+poll = poll + glob.to_lpeg("**/*.sln")
+poll = poll + glob.to_lpeg("**/*.csproj")
+poll = poll + glob.to_lpeg("**/bin/**")
+poll = poll + glob.to_lpeg("**/obj/**")
+require("vim.lsp._watchfiles")._poll_exclude_pattern = poll

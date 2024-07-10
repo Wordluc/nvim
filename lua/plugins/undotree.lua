@@ -1,5 +1,8 @@
 return {
-	'mbbill/undotree',
-	config=function()
-	vim.keymap.set('n', '<leader>r', vim.cmd.UndotreeToggle)	end
+  "jiaoshijie/undotree",
+  dependencies = "nvim-lua/plenary.nvim",
+  config = true,
+  keys = { -- load the plugin only when using it's keybinding:
+    { "<leader>b", "<cmd>lua require('undotree').toggle()<cr>" },
+  },
 }
