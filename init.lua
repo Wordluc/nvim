@@ -1,3 +1,4 @@
+local inputEnv = vim.fn.input("Enter env: ")
 require("WordLuc.packer")
 local cap = require('lspconfig').util.default_config.capabilities
 
@@ -45,7 +46,6 @@ function EnvManage.addEnv(env)
 	profiles[env]()
 	table.insert(EnvManage.envs, env)
 end
-local inputEnv = vim.fn.input("Enter env: ")
 print("\n")
 
 
