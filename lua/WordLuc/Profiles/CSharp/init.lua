@@ -9,9 +9,9 @@ vim.api.nvim_create_user_command('Gnamespace', function()
 	local newPath = table.concat(namespace, ".", 1, #namespace - 1)
 	vim.api.nvim_feedkeys("inamespace " .. newPath .. ";", "n", true)
 end, { bang = true, nargs = '*' })
-
 vim.api.nvim_create_user_command('Gtypescript', function()
 	require("FromC#ToTypescript")
-			.convertDto(90,"")
+			.convertDto("")
 end, { bang = true, nargs = '*' })
+
 

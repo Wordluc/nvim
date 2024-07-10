@@ -1,2 +1,3 @@
 return {
- "Wordluc/FromCsToTypescript"}
+ "WordLuc/FromCsToTypescript.nvim",
+ }
