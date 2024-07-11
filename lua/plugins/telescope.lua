@@ -30,6 +30,6 @@ return {
 		end)
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
 		vim.keymap.set('n', '<leader>fs', builtin.tagstack, {})
-		vim.keymap.set('n', '<leader>fs', builtin.git_status, {})
+		vim.keymap.set('n', '<leader>fg', builtin.git_status, {})
 	end
 }
