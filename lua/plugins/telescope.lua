@@ -29,7 +29,7 @@ return {
 			builtin.lsp_references()
 		end)
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
-
 		vim.keymap.set('n', '<leader>fs', builtin.tagstack, {})
+		vim.keymap.set('n', '<leader>fs', builtin.git_status, {})
 	end
 }

@@ -1,16 +1,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })()
-	end,
 	config=function()
-
 	require 'nvim-treesitter.configs'.setup {
 		ensure_installed = { "c", "c_sharp", "javascript", "typescript", "lua", "vim", "vimdoc", "query", "zig", "rust" },
 			sync_install = false,
-
-			auto_install = true,
-
+			auto_install = false,
 			highlight = {
 				enable = true,
 				-- Instead of true it can also be a list of languages
