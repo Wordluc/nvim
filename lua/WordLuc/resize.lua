@@ -1,4 +1,5 @@
-   local function horizontalResize(amount, increment)
+vim.fn.setreg("y", 1)
+local function horizontalResize(amount, increment)
 	local x = vim.api.nvim_win_get_width(0)
 	if amount ~= 0 then
 		vim.fn.setreg("y", math.sqrt(amount * amount))
@@ -27,4 +28,3 @@ end
 vim.keymap.set("n", "<C-h>", function() horizontalResize(vim.v.count, true) end)
 
 vim.keymap.set("n", "<C-k>", function() verticalResize(vim.v.count, true) end)
-

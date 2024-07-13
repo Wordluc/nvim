@@ -1,36 +1,17 @@
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'mbbill/undotree'
-	use 'wbthomason/packer.nvim'
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
-	use { "nvim-neotest/nvim-nio" }
-	use { "Wordluc/FromC-ToTypeScript", branch = "master" }
-	use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-	use('hrsh7th/nvim-cmp')
-	use('L3MON4D3/LuaSnip')
-	use('hrsh7th/cmp-nvim-lsp')
-	use('folke/neodev.nvim') --for lsp vim
-	use({ 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end })
-	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
-	-- vs-code like icons
-	use("nvim-tree/nvim-web-devicons")
-	use {
-		"ray-x/lsp_signature.nvim",
-	}
-	use {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-	}
-	use {
-		"navarasu/onedark.nvim"
-	}
-	use { 'Exafunction/codeium.vim', tag = "1.8.37"
-	}
-end)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out,                            "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
+end
+vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
+require('lazy').setup("plugins")

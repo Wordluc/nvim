@@ -13,3 +13,4 @@ vim.api.nvim_create_user_command('Tests', function(v)
 	command = command .. ' ./...'
 	vim.cmd(command)
 end, { bang = true, nargs = '*' })
+Default_setup("gopls")

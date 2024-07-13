@@ -1,6 +1,5 @@
 require("WordLuc.remap")
 require("WordLuc.OpenvsCode")
-require("WordLuc.Profiles")
 require("WordLuc.resize")
 if vim.fn.has('win32') == 1 then
 	vim.o.shell = 'powershell'
@@ -22,17 +21,8 @@ vim.api.nvim_set_option('shiftwidth', 2)
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 10
---vim.cmd("set noequalalways")
 vim.g.netrw_sort_by = 'name'
 vim.g.netrw_sort_direction = 'reverse'
-
---vim.opt.autoread = true
---vim.api.nvim_create_autocmd({"FocusGained","BufEnter"},{
---		pattern = { "*" },
---		callback = function()
---			vim.cmd("checktime")
---		end
---})
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldcolumn = '1'
