@@ -18,6 +18,7 @@ end, { bang = true, nargs = '*' })
 local glob = require('vim.glob')
 local poll = require("vim.lsp._watchfiles")._poll_exclude_pattern
 poll = poll + glob.to_lpeg("**/*.sln")
+poll = poll + glob.to_lpeg("**/*.slnf")
 poll = poll + glob.to_lpeg("**/*.csproj")
 poll = poll + glob.to_lpeg("**/bin/**")
 poll = poll + glob.to_lpeg("**/obj/**")

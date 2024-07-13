@@ -1,5 +1,5 @@
 return {
-	"nvim-telescope/telescope.nvim",
+	"Wordluc/telescope.nvim",
 	dependencies = "tsakirist/telescope-lazy.nvim",
 	config = function()
 		require("telescope").setup {
