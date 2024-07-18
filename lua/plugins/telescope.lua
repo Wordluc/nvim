@@ -25,7 +25,7 @@ return {
 			builtin.buffers({ sort_mru = true })
 		end)
 
-		vim.keymap.set('n', '<leader>fg', function()
+		vim.keymap.set('n', '<leader>fh', function()
 			builtin.lsp_references()
 		end)
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
