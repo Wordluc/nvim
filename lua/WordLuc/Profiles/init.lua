@@ -9,10 +9,14 @@ Default_setup("clangd")
 local cap = require('lspconfig').util.default_config.capabilities
 require("neodev").setup()
 require('lspconfig').lua_ls.setup {
-	settings = { Lua = {
-		diagnostics = {
-			globals = { 'vim' } }
-	},
+	settings = {
+		Lua = {
+			hint = {
+				enable = true
+			},
+			diagnostics = {
+				globals = { 'vim' } }
+		},
 		workspace = {
 			library = {
 				vim.env.VIMRUNTIME,

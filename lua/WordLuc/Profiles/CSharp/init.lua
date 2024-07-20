@@ -14,11 +14,8 @@ vim.api.nvim_create_user_command('Gtypescript', function()
 			.convertDto()
 end, { bang = true, nargs = '*' })
 
-
 local glob = require('vim.glob')
 local poll = require("vim.lsp._watchfiles")._poll_exclude_pattern
---FIX: usare .*{.csproj,*.sln,*.slnf} altrimenti esclude i file con nome che hanno la stessa lettere non guiardando l`estensione , per esempio SetProtocolExternal => S l n
---- - `{}` to group conditions (e.g. `*.{ts,js}` matches TypeScript and JavaScript files)
 poll = poll + glob.to_lpeg("**/*.{csproj,sln,slnf}")
 poll = poll + glob.to_lpeg("**/*.{js,css}")
 poll = poll + glob.to_lpeg("**/bin/**")

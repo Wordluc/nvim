@@ -46,4 +46,6 @@ end)
 
 vim.keymap.set("n", "<leader>j", "o<C-c>")
 vim.keymap.set("n", "<leader>k", "O<C-c>")
-
+vim.keymap.set("n", "<C-i>", function ()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)

@@ -4,10 +4,12 @@ local cap = require('lspconfig').util.default_config.capabilities
 
 cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
-Default_setup = function(server)
-	require('lspconfig')[server].setup({
-		capabilities = cap,
-	})
+Default_setup = function(server,opts)
+	if opts == nil then
+		opts = {}
+	end
+	opts.capabilities = cap
+	require('lspconfig')[server].setup(opts)
 end
 EnvManage = {
 	envs = {}
