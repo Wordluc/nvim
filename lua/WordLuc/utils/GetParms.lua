@@ -5,7 +5,7 @@ return function(string)
 		if #parts == 2 then
 			parms[parts[1]] = parts[2]
 		else
-			local flag = { segment:match("-(.*)") }
+			local flag = { segment:match("(.*)") }
 			if #flag == 1 then
 				parms[flag[1]] = true
 			else

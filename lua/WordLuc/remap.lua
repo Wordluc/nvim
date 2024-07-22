@@ -1,3 +1,4 @@
+local utils = require("WordLuc.utils")
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>z", vim.cmd.Ex)
 
@@ -23,9 +24,9 @@ vim.keymap.set("n", "cm", 'cgn')
 --vim.keymap.set("n", "<C-c>k", "<cmd>:split<CR>") there is (ctrl + w) +v
 --vim.keymap.set("n", "<C-c>l", "<cmd>:vsplit<CR>")there is (ctrl + w) +s
 
-vim.keymap.set("n", "<C-y>", function ()
-   local regVim = vim.fn.getreg('')
-	 vim.fn.setreg("*", regVim)
+vim.keymap.set("n", "<C-y>", function()
+	local regVim = vim.fn.getreg('')
+	vim.fn.setreg("*", regVim)
 end)
 vim.keymap.set("n", "<C-s>", "<C-w>T")
 vim.keymap.set("n", "<C-c>c", function()
@@ -49,3 +50,17 @@ vim.keymap.set("n", "<leader>k", "O<C-c>")
 vim.keymap.set("n", "<C-i>", function ()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
+
+vim.api.nvim_create_user_command('WatchFiles', function(v)
+	local parms = utils.GetParms(v.args)
+	local watchFiles = require('lspconfig').util.default_config.capabilities.workspace.didChangeWatchedFiles
+	if parms["true"] then
+		print("Active watch files")
+		watchFiles.dynamicRegistration = true
+	else
+		if parms["false"] then
+			print("Disable watch files")
+			watchFiles.dynamicRegistration = false
+		end
+	end
+end, { bang = true, nargs = '*' })
