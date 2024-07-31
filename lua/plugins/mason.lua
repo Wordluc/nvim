@@ -34,13 +34,13 @@ return {
 			callback = function(event)
 				local opts = { buffer = event.buf }
 				vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-				vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.hover() end, opts)
 				vim.keymap.set("n", "gl", function() vim.diagnostic.goto_next() end, opts)
 				vim.keymap.set("n", "gh", function() vim.diagnostic.goto_prev() end, opts)
 				vim.keymap.set("n", "<leader>a", function() vim.lsp.buf.code_action() end, opts)
 				vim.keymap.set("n", "<leader>g", function() vim.lsp.buf.references() end, opts)
 				vim.keymap.set("n", "gr", function() vim.lsp.buf.rename() end, opts)
 				vim.keymap.set("n", "<C-g>", function() telescope.diagnostics({ severity_limit = 1 }) end, opts)
+				vim.keymap.set("n", "<C-d>", function() vim.lsp.buf.hover() end)
 			end
 		})
 		vim.diagnostic.config { update_in_insert = true }
