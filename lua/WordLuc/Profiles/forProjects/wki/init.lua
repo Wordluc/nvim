@@ -42,7 +42,7 @@ poll = poll + glob.to_lpeg("**/*.js")
 poll = poll + glob.to_lpeg("**/*.css")
 poll = poll + glob.to_lpeg("**/GenyaUploads/**")
 require("vim.lsp._watchfiles")._poll_exclude_pattern = poll
-Default_setup("tsserver")
+--Default_setup("tsserver")
 Default_setup("html")
 Default_setup("cssls")
 Default_setup("angularls")

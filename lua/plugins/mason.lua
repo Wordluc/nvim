@@ -12,7 +12,7 @@ return {
 			{
 				"csharp_ls",
 				"pyright",
-				"tsserver",
+	--			"tsserver",
 				"lua_ls",
 				"vimls",
 				"gopls",

@@ -1,3 +1,4 @@
+local utils = require("WordLuc.utils")
 print("Welcome to C#")
 Default_setup("csharp_ls")
 vim.api.nvim_create_user_command('Gnamespace', function()
