@@ -1,6 +1,10 @@
 local utils = require("WordLuc.utils")
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>z",function() vim.api.nvim_command("Rex")end)
+vim.keymap.set("n", "<leader>z", function()--Exit and reset position cursor 
+	local cur_file = vim.fn.expand('%:t')
+	vim.cmd.Ex()
+	vim.fn.search('^' .. cur_file .. '$')
+end)
 vim.keymap.set("n", "<C-u>", "u", { silent = true })
 vim.keymap.set("i", "<C-u>", "<C-c> u i", { silent = true })
 
@@ -46,8 +50,8 @@ end)
 
 vim.keymap.set("n", "<leader>j", "o<C-c>")
 vim.keymap.set("n", "<leader>k", "O<C-c>")
-vim.keymap.set("n", "<C-i>", function ()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+vim.keymap.set("n", "<C-i>", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
 
 vim.api.nvim_create_user_command('WatchFiles', function(v)
