@@ -1,7 +1,6 @@
 local utils = require("WordLuc.utils")
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>z", vim.cmd.Ex)
-
+vim.keymap.set("n", "<leader>z",function() vim.api.nvim_command("Rex")end)
 vim.keymap.set("n", "<C-u>", "u", { silent = true })
 vim.keymap.set("i", "<C-u>", "<C-c> u i", { silent = true })
 
