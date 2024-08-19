@@ -1,6 +1,5 @@
 print("Welcome to C#")
 Default_setup("csharp_ls")
-Default_setup("typescript-tools")
 vim.api.nvim_create_user_command('Gnamespace', function()
 	local dir = vim.fn.expand("%:.")
 	local namespace = {}
