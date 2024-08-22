@@ -4,7 +4,7 @@ return {
 	config = function()
 		local extra = {}
 		if EnvManage.isEnv(EnvEnum.wki) then
-			extra = { "%.d.ts", "%.js" }
+			extra = { "%.d.ts", "%.js", "%.css","%.dgml","%.csso","%.csso.map","%.jso.d.ts.map","%.jso.map" }
 		end
 		require("telescope").setup {
 			defaults = {
