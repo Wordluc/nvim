@@ -2,6 +2,10 @@ return {
 	"Wordluc/telescope.nvim",
 	dependencies = "tsakirist/telescope-lazy.nvim",
 	config = function()
+		local extra = {}
+		if EnvManage.isEnv(EnvEnum.wki) then
+			extra = { "%.d.ts", "%.js" }
+		end
 		require("telescope").setup {
 			defaults = {
 				path_display = {
@@ -9,9 +13,10 @@ return {
 						reverse_directories = true
 					}
 				},
-				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*" },
+				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*", unpack(extra) },
 			}
 		}
+		require("telescope").load_extension("lazy")
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 		vim.keymap.set('n', '<leader>fvv', function()
@@ -29,7 +34,6 @@ return {
 			builtin.lsp_references()
 		end)
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
-		vim.keymap.set('n', '<leader>fs', builtin.tagstack, {})
 		vim.keymap.set('n', '<leader>fg', builtin.git_status, {})
 	end
 }

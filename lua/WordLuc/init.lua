@@ -16,8 +16,8 @@ vim.o.shellxquote = ''
 
 vim.opt.incsearch = true
 vim.opt.nu = true
-vim.api.nvim_set_option('tabstop', 2)
-vim.api.nvim_set_option('shiftwidth', 2)
+vim.api.nvim_set_option('tabstop', 3)
+vim.api.nvim_set_option('shiftwidth', 3)
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 10

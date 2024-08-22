@@ -40,6 +40,7 @@ end)
 
 vim.keymap.set("n", "<C-p>", function()
 	local path = vim.fn.expand("%:p")
+	print("path: "..path)
 	vim.fn.setreg("", path)
 end)
 

@@ -19,7 +19,7 @@ end, { bang = true, nargs = '*' })
 vim.api.nvim_create_user_command('Build', function(opts)
 	local dir = vim.fn.getcwd() .. "\\"
 	vim.cmd("tabnew")
-	vim.cmd("terminal msbuild " .. dir .. opts.args)
+	vim.cmd("terminal ./Run_MSBuild.cmd " .. dir .. opts.args)
 end, {
 	bang = true,
 	nargs = 1,
