@@ -3,8 +3,9 @@ return {
 	dependencies = "tsakirist/telescope-lazy.nvim",
 	config = function()
 		local extra = {}
+		local actions = require("telescope.actions")
 		if EnvManage.isEnv(EnvEnum.wki) then
-			extra = { "%.d.ts", "%.js", "%.css","%.dgml","%.csso","%.csso.map","%.jso.d.ts.map","%.jso.map" }
+			extra = { "%.d.ts", "%.js", "%.css", "%.dgml", "%.csso", "%.csso.map", "%.jso.d.ts.map", "%.jso.map" }
 		end
 		require("telescope").setup {
 			defaults = {
@@ -14,7 +15,20 @@ return {
 					}
 				},
 				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*", unpack(extra) },
-			}
+				mappings = {
+					i={
+						["<C-k>"] = "preview_scrolling_up",
+						["<C-j>"] = "preview_scrolling_down",
+						["<C-h>"] = "preview_scrolling_left",
+						["<C-l>"] = "preview_scrolling_right",
+						["<Down>"] = "move_selection_next",
+						["<Up>"] = "move_selection_previous",
+						["<c-w>"] = "move_selection_previous",
+						["<c-s>"] = "move_selection_next",
+
+					}
+				}
+			},
 		}
 		require("telescope").load_extension("lazy")
 		local builtin = require('telescope.builtin')
