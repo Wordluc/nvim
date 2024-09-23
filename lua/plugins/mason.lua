@@ -6,11 +6,17 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	config = function()
-		require("mason").setup()
+		require('mason').setup({
+			registries = {
+				'github:mason-org/mason-registry',
+				'github:syndim/mason-registry'
+			},
+		})
 		require("mason-lspconfig").setup {
 			ensure_installed =
 			{
-				"csharp_ls",
+				--			"csharp_ls",
+				--"roslyn",-- da sistemare 
 				"pyright",
 				"lua_ls",
 				"vimls",
@@ -46,7 +52,7 @@ return {
 
 		vim.keymap.set("n", "<leader>f", function()
 			vim.lsp.buf.format({})
+			vim.fn.feedkeys("gg=G''")
 		end)
 	end
-
 }
