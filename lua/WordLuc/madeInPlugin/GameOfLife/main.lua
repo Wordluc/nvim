@@ -12,7 +12,7 @@ local childPosition = {
 	x = vim.api.nvim_win_get_width(0) - childSize.x / 2 - parentSize.x / 2
 }
 local key
-vim.on_key(function(v) key = v  end)
+vim.on_key(function(v) key = v end)
 
 local function initializeMatrix()
 	local matrix = {}
