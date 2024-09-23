@@ -17,15 +17,6 @@ EnvEnum = {
 	conf = "",
 }
 local inputEnv = vim.fn.input("Enter env: ")
-local cap = require('lspconfig').util.default_config.capabilities
-
-Default_setup = function(server,opts)
-	if opts == nil then
-		opts = {}
-	end
-	opts.capabilities = cap
-	require('lspconfig')[server].setup(opts)
-end
 
 
 
@@ -61,5 +52,14 @@ end
 print("\n")
 EnvManage.softAddEnv(inputEnv)--TO allow packaging personalization
 require("WordLuc.packer")
+local cap = require('lspconfig').util.default_config.capabilities
+
+Default_setup = function(server,opts)
+	if opts == nil then
+		opts = {}
+	end
+	opts.capabilities = cap
+	require('lspconfig')[server].setup(opts)
+end
 EnvManage.addEnv(inputEnv)
 require("WordLuc")
