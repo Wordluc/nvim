@@ -45,13 +45,8 @@ return {
 		vim.diagnostic.config { update_in_insert = true }
 
 		vim.keymap.set("n", "<leader>f", function()
-			local x, y = vim.fn.getcurpos()[2], vim.fn.getcurpos()[3] -- salva posizione riga e colonna
-			print("x = " .. x .. " y = " .. y)
-			vim.lsp.buf.format({})                              -- formattazione
-			vim.fn.feedkeys('gg=G')                             -- riformattazione del file
-			vim.defer_fn(function()
-				vim.fn.cursor(x, y)                              -- reset della posizione del cursore
-			end, 100)                                           -- aspetta 100ms per permettere la formattazione
+			vim.lsp.buf.format({})
+			vim.fn.feedkeys("gg=G''")
 		end)
 	end
 

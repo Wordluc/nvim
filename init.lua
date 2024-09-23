@@ -21,6 +21,7 @@ function EnvManage.isEnv(env)
 	end
 	return false
 end
+
 function EnvManage.softAddEnv(env)
 	if EnvManage.isEnv(env) then
 		return
@@ -31,6 +32,7 @@ function EnvManage.softAddEnv(env)
 	end
 	table.insert(EnvManage.envs, env)
 end
+
 function EnvManage.addEnv(env)
 	EnvManage.envs = {}
 	if EnvManage.isEnv(env) then

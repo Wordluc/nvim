@@ -21,11 +21,8 @@ return {
 						["<C-j>"] = "preview_scrolling_down",
 						["<C-h>"] = "preview_scrolling_left",
 						["<C-l>"] = "preview_scrolling_right",
-						["<Down>"] = "move_selection_next",
-						["<Up>"] = "move_selection_previous",
-						["<c-w>"] = "move_selection_previous",
-						["<c-s>"] = "move_selection_next",
-
+						["<M-k>"] = "move_selection_previous",
+						["<M-j>"] = "move_selection_next",
 					}
 				}
 			},

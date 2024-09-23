@@ -10,29 +10,7 @@ return {
 			tree_api.tree.toggle(true, false, vim.fn.expand("%:p"))
 		end)
 
-		local function GetPath(node)
-			local parent = node.parent
-			local path = ""
-			while (parent ~= nil) do
-				if (path ~= "") then
-					path = "/" .. path
-				end
-				path = node.name .. path
-				node = parent
-				parent = parent.parent
-			end
-			return path
-		end
-
---		vim.keymap.set("n", "vg", function()
---			vim.cmd("silent !git add " .. GetPath(tree_api.tree.get_node_under_cursor()))
---		end)
---
---		vim.keymap.set("n", "vr", function()
---			vim.cmd("silent !git reset " .. GetPath(tree_api.tree.get_node_under_cursor()))
---		end)
-
-		nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
+		nvim_tree.setup {
 			on_attach = "default",
 			hijack_cursor = false,
 			auto_reload_on_write = false,
