@@ -9,7 +9,7 @@ return {
 		vim.keymap.set("i", "<C-l>", function()
 			neocodeium.cycle(1)
 		end)
-		vim.keymap.set("i", "<C-l>", function()
+		vim.keymap.set("i", "<C-h>", function()
 			neocodeium.cycle(-1)
 		end)
 		vim.keymap.set("n", "<C-a>", function()
