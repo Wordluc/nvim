@@ -9,6 +9,7 @@ EnvEnum = {
 	cs = "cs",
 	conf = "",
 }
+
 profiles[EnvEnum.wki] = function() require("WordLuc.Profiles.forProjects.wki") end
 profiles[EnvEnum.go] = function() require("WordLuc.Profiles.go") end
 profiles[EnvEnum.cs] = function() require("WordLuc.Profiles.CSharp") end

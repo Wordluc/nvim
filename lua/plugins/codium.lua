@@ -1,18 +1,20 @@
 return {
-	'Exafunction/codeium.vim',
+	'monkoose/neocodeium',
 	config = function()
-		vim.keymap.set('i', '<Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-		vim.keymap.set('i', '<c-l>', function() return vim.fn['codeium#CycleCompletions'](1) end,
-			{ expr = true, silent = true })
-		vim.keymap.set('i', '<c-s-L>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
-			{ expr = true, silent = true })
-		vim.keymap.set('i', '<c-Right>', function() return vim.fn['codeium#CycleCompletions'](1) end,
-			{ expr = true, silent = true })
-		vim.keymap.set('i', '<c-Left>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
-			{ expr = true, silent = true })
-		vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-		vim.keymap.set('n', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-		vim.keymap.set('n', '<c-a>', function() return vim.fn['codeium#Chat']() end)
+		local neocodeium = require("neocodeium")
+		neocodeium.setup()
+		vim.keymap.set("i", "<Tab>", function()
+			neocodeium.accept()
+		end)
+		vim.keymap.set("i", "<C-l>", function()
+			neocodeium.cycle_or_complete(1)
+		end)
+		vim.keymap.set("n", "<C-a>", function()
+			neocodeium.chat()
+		end)
+		vim.keymap.set("n", "<C-x>", function()
+			neocodeium.clear()
+		end)
 	end
 
 
