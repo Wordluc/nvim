@@ -1,6 +1,61 @@
 print("Welcome to C#")
 --Default_setup("csharp_ls")
 require("roslyn").setup({
+	choose_sln = function(strs)
+		if not EnvManage.isEnv(EnvEnum.wki) then
+			return
+		end
+		if vim.g.roslyn_nvim_selected_solution ~= nil then
+			if vim.g.roslyn_nvim_selected_solution:find("GenyaALL.sln") ~= nil then
+				print("Load All")
+				return vim.g.roslyn_nvim_selected_solution
+			end
+		end
+		local path = vim.fn.expand("%:.")
+		local i = 0
+		local segment1
+		local segment2
+		for seg in path:gmatch("[^\\|/|.]+") do
+			if i == 1 then
+				segment1 = seg
+			end
+			if i == 2 then
+				segment2 = seg
+				break
+			end
+			i = i + 1
+		end
+		local restart_client = false
+		for _, str in ipairs(strs) do
+			if segment1 ~= nil then
+				if str:find(segment1) ~= nil then
+					if vim.g.roslyn_nvim_selected_solution ~= nil then
+						if vim.g.roslyn_nvim_selected_solution:find(segment1) == nil then
+							restart_client = true
+						end
+					end
+					if restart_client then
+						vim.lsp.stop_client(vim.lsp.get_clients({ name = "roslyn" }), true)
+					end
+					return str
+				end
+			end
+			if segment2 ~= nil then
+				if str:find(segment2) ~= nil then
+					if vim.g.roslyn_nvim_selected_solution ~= nil then
+						if vim.g.roslyn_nvim_selected_solution:find(segment2) == nil then
+							restart_client = true
+						end
+					end
+					if restart_client then
+						vim.lsp.stop_client(vim.lsp.get_clients({ name = "roslyn" }), true)
+					end
+					return str
+				end
+			end
+		end
+	end,
+	filewatching=false,
 	config = {
 		cmd = {
 			"dotnet",
