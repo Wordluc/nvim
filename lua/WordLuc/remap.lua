@@ -54,17 +54,3 @@ vim.keymap.set("n", "<leader>k", "O<C-c>")
 vim.keymap.set("n", "<C-i>", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
-
-vim.api.nvim_create_user_command('WatchFiles', function(v)
-	local parms = utils.GetParms(v.args)
-	local watchFiles = require('lspconfig').util.default_config.capabilities.workspace.didChangeWatchedFiles
-	if parms["true"] then
-		print("Active watch files")
-		watchFiles.dynamicRegistration = true
-	else
-		if parms["false"] then
-			print("Disable watch files")
-			watchFiles.dynamicRegistration = false
-		end
-	end
-end, { bang = true, nargs = '*' })
