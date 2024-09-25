@@ -16,7 +16,7 @@ return {
 				},
 				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*", unpack(extra) },
 				mappings = {
-					i={
+					i = {
 						["<C-k>"] = "preview_scrolling_up",
 						["<C-j>"] = "preview_scrolling_down",
 						["<C-h>"] = "preview_scrolling_left",
@@ -46,5 +46,6 @@ return {
 		end)
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, {})
 		vim.keymap.set('n', '<leader>fg', builtin.git_status, {})
+		vim.keymap.set('n', '<leader>fl', function()builtin.builtin({filter_match="lsp_",title="LSP Picker"}) end)
 	end
 }
