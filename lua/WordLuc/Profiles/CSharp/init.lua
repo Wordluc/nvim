@@ -55,14 +55,20 @@ require("roslyn").setup({
 			end
 		end
 	end,
-	filewatching=false,
+	filewatching = false,
 	config = {
-		capabilities=require("lspconfig").default_config.capabilities,
+		capabilities = require("lspconfig").default_config.capabilities,
 		cmd = {
 			"dotnet",
 			vim.fs.joinpath(vim.fn.stdpath("data"), "roslyn", "Microsoft.CodeAnalysis.LanguageServer.dll"),
 		},
 		settings = {
+			["csharp|background_analysis"] = {
+				background_analysis = {
+					dotnet_analyzer_diagnostics_scope = "openFiles",
+					dotnet_compiler_diagnostics_scope = "openFiles"
+				}
+			},
 			["csharp|inlay_hints"] = {
 				csharp_enable_inlay_hints_for_implicit_object_creation = true,
 				csharp_enable_inlay_hints_for_implicit_variable_types = true,
@@ -82,6 +88,19 @@ require("roslyn").setup({
 			},
 		}
 	}
+})
+vim.api.nvim_create_autocmd("BufWinEnter",{
+	callback = function()
+		for _, client in ipairs(vim.lsp.get_active_clients()) do
+			if client.name == "roslyn" then
+				client.request_sync("workspace/didChangeWatchedFiles",{
+					changes ={
+                 {uri=vim.uri_from_bufnr(0),type=2}
+					}
+				},0,0)
+			end
+		end
+	end
 })
 vim.api.nvim_create_user_command('Gnamespace', function()
 	local dir = vim.fn.expand("%:.")
