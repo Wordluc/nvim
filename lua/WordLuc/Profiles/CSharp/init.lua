@@ -93,7 +93,7 @@ require("roslyn").setup({
 })
 
 vim.api.nvim_create_user_command('AddedFile', function() --da attaccare a treeneovim
-	require("roslyn.csprojManager").addElement(vim.fn.expand("%:p"))
+	require("roslyn.csprojManager").add_element(vim.fn.expand("%:p"))
 end, { bang = true, nargs = '*' })
 
 vim.api.nvim_create_user_command('Gnamespace', function()

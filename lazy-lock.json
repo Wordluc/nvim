@@ -17,7 +17,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "26220156aafb198b2de6a4cf80c1b120a3768da0" },
   "onedark.nvim": { "branch": "master", "commit": "fae34f7c635797f4bf62fb00e7d0516efa8abe37" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
-  "roslyn_ls.nvim": { "branch": "main", "commit": "1bbe4a51d3fc313286cb9332bae079084534547d" },
+  "roslyn_ls.nvim": { "branch": "main", "commit": "71225a525c6374334f6715ff81412c052363dac7" },
   "telescope-lazy.nvim": { "branch": "main", "commit": "32d007e0728ccf77c8b9fd7bbd612a2c9040d13b" },
   "telescope.nvim": { "branch": "master", "commit": "f2d46a69ef885e5dcab4ff5fe1fa02502e2adfee" },
   "typescript-tools.nvim": { "branch": "master", "commit": "f8c2e0b36b651c85f52ad5c5373ff8b07adc15a7" },
