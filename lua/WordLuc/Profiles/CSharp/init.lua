@@ -89,7 +89,7 @@ require("roslyn").setup({
 	}
 })
 
-require("roslyn.nvim-tree").setup_event()
+require("roslyn.nvim-tree").setup_events()
 
 vim.api.nvim_create_user_command('AddFile', function() --da attaccare a treeneovim
 	require("roslyn.csprojManager").add_element(vim.fn.expand("%:p"))
