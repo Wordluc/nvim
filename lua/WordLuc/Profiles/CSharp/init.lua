@@ -1,7 +1,4 @@
 print("Welcome to C#")
-local uv = require('luv')
-local util_roslyn = require("roslyn.generalUtils")
---Default_setup("csharp_ls")
 require("roslyn").setup({
 	choose_sln = function(strs)
 		if not EnvManage.isEnv(EnvEnum.wki) then
@@ -91,6 +88,22 @@ require("roslyn").setup({
 		}
 	}
 })
+
+local tree=require("nvim-tree.events")
+local events=require("nvim-tree.events").Event
+
+tree.subscribe(events.FileCreated, function(data)
+	require("roslyn.csprojManager").add_element(data.fname)
+end)
+
+tree.subscribe(events.WillRemoveFile, function(data)
+	require("roslyn.csprojManager").remove_element(data.fname)
+end)
+
+tree.subscribe(events.NodeRenamed, function(data)
+	require("roslyn.csprojManager").remove_element(data.old_name)
+	require("roslyn.csprojManager").add_element(data.new_name)
+end)
 
 vim.api.nvim_create_user_command('AddFile', function() --da attaccare a treeneovim
 	require("roslyn.csprojManager").add_element(vim.fn.expand("%:p"))
