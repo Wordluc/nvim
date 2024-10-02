@@ -23,10 +23,27 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 10
 vim.g.netrw_sort_by = 'name'
 vim.g.netrw_sort_direction = 'reverse'
+function MyFoldExpr(lnum)
+	if EnvManage.isEnv(EnvEnum.cs) then
+     return vim.fn['nvim_treesitter#foldexpr']()
+	end
+	-- Get the current line content
+	local line = vim.fn.getline(lnum)
+
+	if line:match("#region") ~=nil then
+		return vim.treesitter.foldexpr(lnum-1)+1
+	elseif line:match("#endregion") ~=nil then
+		return "<"..vim.treesitter.foldexpr(lnum-1)
+	else
+		return vim.fn['nvim_treesitter#foldexpr']()
+	end
+end
+
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.MyFoldExpr(v:lnum)'
 --vim.opt.foldcolumn = '1'
 vim.opt.foldlevel = 99
 vim.api.nvim_create_user_command('Sleep', function()
 	require("WordLuc.madeInPlugin.GameOfLife.main")()
-end ,{ bang = true, nargs = '*' })
+end, { bang = true, nargs = '*' })
+
