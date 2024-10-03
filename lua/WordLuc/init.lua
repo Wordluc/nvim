@@ -28,9 +28,9 @@ function MyFoldExpr(lnum)
 	-- Get the current line content
 	local line = vim.fn.getline(lnum)
 	if line:match("#region") ~= nil then
-		return ">"..vim.treesitter.foldexpr(lnum)+1
+		return ">"..vim.treesitter.foldexpr(lnum)
 	elseif line:match("#endregion") ~= nil then
-		return "<"..vim.treesitter.foldexpr(lnum)+1
+		return "<"..vim.treesitter.foldexpr(lnum)
 	else
 		return vim.fn['nvim_treesitter#foldexpr']()
 	end
