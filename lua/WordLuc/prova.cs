@@ -1,13 +1,13 @@
 public class prova{
 
-   #region prova
+#region prova
 
-
-		public string prova(string x)=>x switch {
-		}
-
-	#endregion
-
+public void prova(string x) => x switch {
+	"pippo" => "pluto",
+	"pluto" => "pippo",
+	_ => x
+};
+#endregion
 	public string prova(string x)=>x switch {
 		"pippo" => "pluto",
 		"pluto" => "pippo",
