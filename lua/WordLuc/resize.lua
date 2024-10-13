@@ -25,6 +25,6 @@ local function verticalResize(amount, increment)
 	end
 end
 
-vim.keymap.set("n", "<C-h>", function() horizontalResize(vim.v.count, true) end)
+vim.keymap.set("n", "<C-h>", function() horizontalResize(vim.v.count, true) end,{desc = "Horizontal resize by selected amount"})
 
-vim.keymap.set("n", "<C-k>", function() verticalResize(vim.v.count, true) end)
+vim.keymap.set("n", "<C-k>", function() verticalResize(vim.v.count, true) end,{desc = "Vertical resize by selected amount"})

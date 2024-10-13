@@ -8,7 +8,7 @@ return {
 
 		vim.keymap.set("n", "<leader>v", function()
 			tree_api.tree.toggle(true, false, vim.fn.expand("%:p"))
-		end)
+		end, { desc = "Toggle nvim-tree" })
 
 		nvim_tree.setup {
 			on_attach = "default",
