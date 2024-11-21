@@ -74,7 +74,13 @@ local function isAlive(x, y, matrix)
 	return false
 end
 
-local function loop(matrix, buf)
+local function loop(matrix, buf,time)
+	if time == nil then
+		time = 100
+	end
+	if time <= 0 then
+		return
+	end
 	if key ~= nil then
 		vim.cmd("bd " .. buf)
 		return
@@ -93,14 +99,12 @@ local function loop(matrix, buf)
 	drawMatrix(matrix, buf)
 	vim.defer_fn(function()
 		if isChanged == false then
-			print("cio")
 			matrix = initializeMatrix()
 		end
 		loop(matrix, buf)
-	end, 500)
+	end, time)
 end
-
-return function()
+return function(time)
 	key = nil
 	local r = win.open_buffer(childPosition, childSize)
 	win.fill_buffer(r.buf, " ")
