@@ -17,6 +17,7 @@ return {
 			{
 				--			"csharp_ls",
 				--"roslyn",-- da sistemare 
+				"jsonls",
 				"pyright",
 				"lua_ls",
 				"vimls",

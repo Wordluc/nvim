@@ -61,4 +61,5 @@ Default_setup = function(server,opts)
 end
 print("\n")
 EnvManage.addEnv(inputEnv)
+require("WordLuc.Profiles.forAll")
 require("WordLuc")
