@@ -91,14 +91,6 @@ require("roslyn").setup({
 
 require("roslyn.nvim-tree").setup_events()
 
-vim.api.nvim_create_user_command('AddFile', function() --da attaccare a treeneovim
-	require("roslyn.csprojManager").add_element(vim.fn.expand("%:p"))
-end, { bang = true, nargs = '*' })
-
-vim.api.nvim_create_user_command('RemoveFile', function() --da attaccare a treeneovim
-	require("roslyn.csprojManager").remove_element(vim.fn.expand("%:p"))
-end, { bang = true, nargs = '*' })
-
 vim.api.nvim_create_user_command('Gnamespace', function()
 	local dir = vim.fn.expand("%:.")
 	local namespace = {}
@@ -112,10 +104,3 @@ vim.api.nvim_create_user_command('Gtypescript', function()
 	require("FromC#ToTypescript")
 	.convertDto()
 end, { bang = true, nargs = '*' })
-
-local glob = require('vim.glob')
-local poll = require("vim.lsp._watchfiles")._poll_exclude_pattern
-poll = poll + glob.to_lpeg("**/*.{csproj,sln,slnf}")
-poll = poll + glob.to_lpeg("**/bin/**")
-poll = poll + glob.to_lpeg("**/obj/**")
-require("vim.lsp._watchfiles")._poll_exclude_pattern = poll
