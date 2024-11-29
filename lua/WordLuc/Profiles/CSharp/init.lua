@@ -89,7 +89,7 @@ require("roslyn").setup({
 	}
 })
 
-require("roslyntree").setupTreeEvents()
+require("roslyntree").setupCsprojOperation()
 vim.api.nvim_create_user_command('Gnamespace', function()
 	local dir = vim.fn.expand("%:.")
 	local namespace = {}
