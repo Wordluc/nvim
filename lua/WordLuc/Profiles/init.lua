@@ -1,6 +1,7 @@
 print("Welcome to all profiles")
 require("WordLuc.Profiles.CSharp")
 require("WordLuc.Profiles.go")
+require("WordLuc.Profiles.rust")
 Default_setup("pyright")
 Default_setup("vimls")
 Default_setup("zls")

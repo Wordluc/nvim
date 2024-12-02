@@ -18,6 +18,7 @@ return {
 				--			"csharp_ls",
 				--"roslyn",-- da sistemare 
 				"pyright",
+				"rust_analyzer",
 				"lua_ls",
 				"vimls",
 				"gopls",
