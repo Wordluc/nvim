@@ -1,5 +1,5 @@
 return {
-	"Wordluc/roslyn_ls.nvim",
+	"seblj/roslyn.nvim",
 	ft = "cs",
 	opts = {}
 }

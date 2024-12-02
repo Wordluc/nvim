@@ -9,7 +9,7 @@ return {
 		require('mason').setup({
 			registries = {
 				'github:mason-org/mason-registry',
-				'github:syndim/mason-registry'
+				'github:Crashdummyy/mason-registry'
 			},
 		})
 		require("mason-lspconfig").setup {
@@ -17,6 +17,7 @@ return {
 			{
 				--			"csharp_ls",
 				--"roslyn",-- da sistemare 
+				"jsonls",
 				"pyright",
 				"rust_analyzer",
 				"lua_ls",

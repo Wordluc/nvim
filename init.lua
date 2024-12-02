@@ -53,6 +53,7 @@ local inputEnv = vim.fn.input("Enter env: ")
 EnvManage.softAddEnv(inputEnv)--TO allow packaging personalization
 require("WordLuc.packer")
 local cap = require('lspconfig').util.default_config.capabilities
+cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 Default_setup = function(server,opts)
 	if opts == nil then
 		opts = {}
@@ -62,4 +63,5 @@ Default_setup = function(server,opts)
 end
 print("\n")
 EnvManage.addEnv(inputEnv)
+require("WordLuc.Profiles.forAll")
 require("WordLuc")

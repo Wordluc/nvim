@@ -35,18 +35,6 @@ end, {
 		}
 	end,
 })
-local glob = require('vim.glob')
-local poll = require("vim.lsp._watchfiles")._poll_exclude_pattern
-poll = poll + glob.to_lpeg("**/FakeCredentials/**")
-poll = poll + glob.to_lpeg("**/*.js")
-poll = poll + glob.to_lpeg("**/*.css")
-poll = poll + glob.to_lpeg("**/*.d.ts")
-poll = poll + glob.to_lpeg("**/*.dgml")
-poll = poll + glob.to_lpeg("**/*.csso")
-poll = poll + glob.to_lpeg("**/*.csso.map")
-poll = poll + glob.to_lpeg("**/*.jso.d.ts.map")
-poll = poll + glob.to_lpeg("**/*.jso.map")
-require("vim.lsp._watchfiles")._poll_exclude_pattern = poll
 Default_setup("typescript-tools")
 Default_setup("html")
 Default_setup("cssls")
