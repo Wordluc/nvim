@@ -17,6 +17,7 @@ return {
 			{
 				--			"csharp_ls",
 				--"roslyn",-- da sistemare 
+				"rust_analyzer",
 				"jsonls",
 				"pyright",
 				"lua_ls",

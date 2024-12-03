@@ -6,12 +6,14 @@ EnvEnum = {
 	wki = "wki",
 	go = "go",
 	cs = "cs",
+	rust = "rust",
 	conf = "",
 }
 
 profiles[EnvEnum.wki] = function() require("WordLuc.Profiles.forProjects.wki") end
 profiles[EnvEnum.go] = function() require("WordLuc.Profiles.go") end
 profiles[EnvEnum.cs] = function() require("WordLuc.Profiles.CSharp") end
+profiles[EnvEnum.rust] = function() require("WordLuc.Profiles.Rust") end
 profiles[EnvEnum.conf] = function() require("WordLuc.Profiles") end
 function EnvManage.isEnv(env)
 	for i = 1, #EnvManage.envs do
