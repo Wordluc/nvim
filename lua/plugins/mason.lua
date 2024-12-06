@@ -15,7 +15,7 @@ return {
 		require("mason-lspconfig").setup {
 			ensure_installed =
 			{
-				--			"csharp_ls",
+							"csharp_ls",
 				--"roslyn",-- da sistemare 
 				"rust_analyzer",
 				"jsonls",
