@@ -6,7 +6,7 @@ EnvEnum = {
 	wki = "wki",
 	go = "go",
 	cs = "cs",
-	rust="rust",
+	rust = "rust",
 	conf = "",
 }
 
