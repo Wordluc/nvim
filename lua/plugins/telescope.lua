@@ -35,6 +35,7 @@ return {
 			},
 		}
 		require("telescope").load_extension("lazy")
+		require("telescope").load_extension("marks_nvim")
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
 		vim.keymap.set('n', '<leader>fvv', function()
@@ -46,6 +47,10 @@ return {
 		end, {desc = "Grep text selected"})
 		vim.keymap.set('n', '<leader>fb', function()
 			builtin.buffers({ sort_mru = true })
+		end, {desc = "Find buffers"})
+
+		vim.keymap.set('n', '<leader>fm', function()
+			require('telescope').extensions.marks_nvim.marks_list_all() --[[ List all marks ]]
 		end, {desc = "Find buffers"})
 
 		vim.keymap.set('n', '<leader>fh', function()
