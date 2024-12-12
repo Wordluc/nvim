@@ -1,18 +1,12 @@
 return {
 	"Wordluc/telescope.nvim",
-	dependencies = {"tsakirist/telescope-lazy.nvim","nvim-telescope/telescope-fzy-native.nvim"},
+	dependencies = { "tsakirist/telescope-lazy.nvim",{"natecraddock/telescope-zf-native.nvim", build="make" }},
 	config = function()
 		local extra = {}
 		if EnvManage.isEnv(EnvEnum.wki) then
 			extra = { "%.d.ts", "%.js", "%.css", "%.dgml", "%.csso", "%.csso.map", "%.jso.d.ts.map", "%.jso.map" }
 		end
 		require("telescope").setup {
-			extensions = {
-				fzy_native = {
-					override_generic_sorter = false,
-					override_file_sorter = true,
-				}
-			},
 			defaults = {
 				path_display = {
 					filename_first = {
@@ -42,7 +36,7 @@ return {
 		}
 		require("telescope").load_extension("lazy")
 		require("telescope").load_extension("marks_nvim")
-		require('telescope').load_extension('fzy_native')
+		require("telescope").load_extension("zf-native")
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
 		vim.keymap.set('n', '<leader>fvv', function()
@@ -66,7 +60,7 @@ return {
 		vim.keymap.set('n', '<leader>fv', builtin.live_grep, { desc = "Live Grep" })
 		vim.keymap.set('n', '<leader>fg', builtin.git_status, { desc = "Git status" })
 		vim.keymap.set('n', '<leader>fl', function() builtin.builtin({ filter_match = "lsp_", title = "LSP Picker" }) end,
-		{ desc = "LSP Functions" })
+			{ desc = "LSP Functions" })
 		vim.keymap.set('n', '<C-x>', function() builtin.keymaps() end, { desc = "Keymaps" })
 	end
 }
