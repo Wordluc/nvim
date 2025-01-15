@@ -54,9 +54,8 @@ require("roslyn").setup({
 			end
 		end
 	end,
-	filewatching = false,
+	filewatching = true,
 	config = {
-		capabilities = require("lspconfig").default_config.capabilities,
 		cmd = {
 			"dotnet",
 			vim.fs.joinpath(vim.fn.stdpath("data"), "roslyn", "Microsoft.CodeAnalysis.LanguageServer.dll"),
