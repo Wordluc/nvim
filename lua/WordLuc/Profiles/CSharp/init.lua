@@ -54,7 +54,7 @@ require("roslyn").setup({
 			end
 		end
 	end,
-	filewatching = true,
+	filewatching = false,
 	config = {
 		cmd = {
 			"dotnet",
