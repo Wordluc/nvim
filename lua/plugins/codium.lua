@@ -22,7 +22,15 @@ return {
 			neocodeium.chat()
 		end)
 		vim.keymap.set("i", "<C-x>", function()
-			neocodeium.clear()
+			local options = require("neocodeium.options").options
+			local M = require("neocodeium.commands")
+			if options.enabled then
+				M.disable()
+				require("neocodeium.completer"):clear(true)
+				print("Stop codeium")
+			else
+				M.enable()
+			end
 		end)
 	end
 
