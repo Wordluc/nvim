@@ -1,4 +1,4 @@
-return {
+return{
 	'saghen/blink.cmp',
 	dependencies = 'rafamadriz/friendly-snippets',
 	build = "cargo build --release",
@@ -14,6 +14,7 @@ return {
 				function(cmp)
 					if cmp.is_visible() then
 						cmp.select_and_accept({index=1})
+						return
 					end
 					vim.api.nvim_feedkeys('\n', 'n', true)
 				end
