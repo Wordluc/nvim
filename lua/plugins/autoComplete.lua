@@ -10,15 +10,7 @@ return{
 			['<Down>'] = { 'select_next', 'fallback' },
 			['<C-k>'] = { 'select_prev', 'fallback' },
 			['<C-j>'] = { 'select_next', 'fallback' },
-			['<CR>']={
-				function(cmp)
-					if cmp.is_visible() then
-						cmp.select_and_accept({index=1})
-						return
-					end
-					vim.api.nvim_feedkeys('\n', 'n', true)
-				end
-				},
+			["<CR>"] = { "accept", "fallback" },
 		},
 		completion = {
 			keyword = { range = 'full' },
