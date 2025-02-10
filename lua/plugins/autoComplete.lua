@@ -1,9 +1,11 @@
-return{
+return {
 	'saghen/blink.cmp',
 	dependencies = 'rafamadriz/friendly-snippets',
 	build = "cargo build --release",
-
 	opts = {
+		sources= {
+			cmdline = {}
+		},
 		keymap = {
 			preset = 'default',
 			['<Up>'] = { 'select_prev', 'fallback' },
@@ -17,8 +19,8 @@ return{
 			menu = {
 				draw = {
 					columns = {
-						{ "kind_icon","kind",gap=2 },
-						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", "kind",              gap = 2 },
+						{ "label",     "label_description", gap = 1 },
 					},
 				}
 			},
