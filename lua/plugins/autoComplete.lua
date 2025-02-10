@@ -1,29 +1,35 @@
 return {
-	'hrsh7th/nvim-cmp',
-	dependencies = {
-		'L3MON4D3/LuaSnip',
-		'hrsh7th/cmp-nvim-lsp',
-	},
-	config = function()
-		local cmp = require('cmp')
-		cmp.setup {
+	'saghen/blink.cmp',
+	dependencies = 'rafamadriz/friendly-snippets',
+	build = "cargo build --release",
 
-			sources = {
-				{ name = 'nvim_lsp' },
+	opts = {
+		keymap = {
+			preset = 'default',
+			['<Up>'] = { 'select_prev', 'fallback' },
+			['<Down>'] = { 'select_next', 'fallback' },
+			['<C-k>'] = { 'select_prev', 'fallback' },
+			['<C-j>'] = { 'select_next', 'fallback' },
+			['<CR>']={
+				function(cmp)
+					if cmp.is_visible() then
+						cmp.select_and_accept({index=1})
+					end
+					vim.api.nvim_feedkeys('\n', 'n', true)
+				end
+				},
+		},
+		completion = {
+			keyword = { range = 'full' },
+			menu = {
+				draw = {
+					columns = {
+						{ "kind" },
+						{ "label", "label_description", gap = 1 },
+					},
+				}
 			},
-			mapping = cmp.mapping.preset.insert({
-				['<CR>'] = cmp.mapping.confirm({ select = false }),
-				['<C-j>'] = cmp.mapping.select_next_item(),
-				['<C-k>'] = cmp.mapping.select_prev_item(),
-			}),window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
-    },
-			snippet = {
-				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
-				end,
-			},
-		}
-	end
+			documentation = { auto_show = true, auto_show_delay_ms = 500 },
+		},
+	}
 }
