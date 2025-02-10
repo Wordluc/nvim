@@ -13,20 +13,22 @@ return {
 				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*", unpack(extra) },
 				mappings = {
 					i = {
-						["<C-k>"] = "preview_scrolling_up",
-						["<C-j>"] = "preview_scrolling_down",
-						["<C-h>"] = "preview_scrolling_left",
-						["<C-l>"] = "preview_scrolling_right",
-						["<M-k>"] = "move_selection_previous",
-						["<M-j>"] = "move_selection_next",
+						["<M-k>"] = "preview_scrolling_up",
+						["<M-j>"] = "preview_scrolling_down",
+						["<M-h>"] = "preview_scrolling_left",
+						["<M-l>"] = "preview_scrolling_right",
+
+						["<C-k>"] = "move_selection_previous",
+						["<C-j>"] = "move_selection_next",
 					},
 					n = {
-						["<C-k>"] = "preview_scrolling_up",
-						["<C-j>"] = "preview_scrolling_down",
-						["<C-h>"] = "preview_scrolling_left",
-						["<C-l>"] = "preview_scrolling_right",
-						["<M-k>"] = "move_selection_previous",
-						["<M-j>"] = "move_selection_next",
+						["<M-k>"] = "preview_scrolling_up",
+						["<M-j>"] = "preview_scrolling_down",
+						["<M-h>"] = "preview_scrolling_left",
+						["<M-l>"] = "preview_scrolling_right",
+
+						["<C-k>"] = "move_selection_previous",
+						["<C-j>"] = "move_selection_next",
 					}
 				}
 			},
