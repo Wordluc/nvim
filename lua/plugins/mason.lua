@@ -15,8 +15,8 @@ return {
 		require("mason-lspconfig").setup {
 			ensure_installed =
 			{
-							"csharp_ls",
-				--"roslyn",-- da sistemare 
+				"csharp_ls",
+				--"roslyn",-- da sistemare
 				"rust_analyzer",
 				"jsonls",
 				"pyright",
@@ -32,7 +32,11 @@ return {
 			},
 			automatic_installation = true,
 		}
-
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+		vim.lsp.handlers.hover, {
+			border = "rounded"
+		}
+		)
 		vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 		vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 		vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
