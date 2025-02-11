@@ -1,7 +1,11 @@
 return {
-  "shellRaining/hlchunk.nvim",
-  event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    require("hlchunk").setup({indent={enable	= true}})
-  end
+	"lukas-reineke/indent-blankline.nvim",
+	main = "ibl",
+	---@module "ibl"
+	---@type ibl.config
+	opts = {
+		scope={
+			enabled=false
+		}
+	},
 }

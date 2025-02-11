@@ -3,7 +3,7 @@
   "RoslynCsproj": { "branch": "master", "commit": "f193b9d9cc27125af45c877f0286b43c716a9041" },
   "blink.cmp": { "branch": "main", "commit": "b2485c76cb7877de6fe9c8670af59ba3d72fd74d" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
-  "hlchunk.nvim": { "branch": "main", "commit": "5465dd33ade8676d63f6e8493252283060cd72ca" },
+  "indent-blankline.nvim": { "branch": "master", "commit": "e10626f7fcd51ccd56d7ffc00883ba7e0aa28f78" },
   "lazy.nvim": { "branch": "main", "commit": "f15a93907ddad3d9139aea465ae18336d87f5ce6" },
   "let-it-snow.nvim": { "branch": "main", "commit": "823511ad1b0d36e44f9c5e2418892e7438f23a41" },
   "lsp_signature.nvim": { "branch": "master", "commit": "5b64964ed02098c85613ee3d20f96bed1dfb64cc" },
