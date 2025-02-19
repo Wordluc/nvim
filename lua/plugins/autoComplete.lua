@@ -3,8 +3,9 @@ return {
 	dependencies = 'rafamadriz/friendly-snippets',
 	build = "cargo build --release",
 	opts = {
-		sources= {
-			cmdline = {}
+		cmdline = {
+			sources = {
+			}
 		},
 		keymap = {
 			preset = 'default',
