@@ -3,14 +3,11 @@ EnvManage = {
 }
 local profiles = {}
 EnvEnum = {
-	wki = "wki",
 	go = "go",
 	cs = "cs",
 	rust = "rust",
 	conf = "",
 }
-
-profiles[EnvEnum.wki] = function() require("WordLuc.Profiles.forProjects.wki") end
 profiles[EnvEnum.go] = function() require("WordLuc.Profiles.go") end
 profiles[EnvEnum.cs] = function() require("WordLuc.Profiles.CSharp") end
 profiles[EnvEnum.rust] = function() require("WordLuc.Profiles.rust") end
