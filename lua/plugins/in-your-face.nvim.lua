@@ -1,7 +1,7 @@
 return {
 	"Wordluc/in-your-face.nvim",
 	config=function ()
-		vim.api.nvim_create_user_command('Try', function()
+		vim.api.nvim_create_user_command('DoomFace', function()
 			local opt={
 				windows={
 					x=vim.fn.winwidth(0)-48,
