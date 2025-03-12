@@ -3,7 +3,7 @@ return {
 	config = function()
 		local neocodeium = require("neocodeium")
 		neocodeium.setup()
-		vim.keymap.set("i", "<M-a>", function()
+		vim.keymap.set("i", "<A-a>", function()
 			neocodeium.accept()
 		end, { expr = true, silent = true })
 		vim.keymap.set("i", "<C-l>", function()
