@@ -13,19 +13,19 @@ return {
 				file_ignore_patterns = { "./^.git/*", "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*", unpack(extra) },
 				mappings = {
 					i = {
-						["<M-k>"] = "preview_scrolling_up",
-						["<M-j>"] = "preview_scrolling_down",
-						["<M-h>"] = "preview_scrolling_left",
-						["<M-l>"] = "preview_scrolling_right",
+						["<A-k>"] = "preview_scrolling_up",
+						["<A-j>"] = "preview_scrolling_down",
+						["<A-h>"] = "preview_scrolling_left",
+						["<A-l>"] = "preview_scrolling_right",
 
 						["<C-k>"] = "move_selection_previous",
 						["<C-j>"] = "move_selection_next",
 					},
 					n = {
-						["<M-k>"] = "preview_scrolling_up",
-						["<M-j>"] = "preview_scrolling_down",
-						["<M-h>"] = "preview_scrolling_left",
-						["<M-l>"] = "preview_scrolling_right",
+						["<A-k>"] = "preview_scrolling_up",
+						["<A-j>"] = "preview_scrolling_down",
+						["<A-h>"] = "preview_scrolling_left",
+						["<A-l>"] = "preview_scrolling_right",
 
 						["<C-k>"] = "move_selection_previous",
 						["<C-j>"] = "move_selection_next",
